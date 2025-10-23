@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Encuesta Linux</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin: 20px;
+            line-height: 1.5;
+            background: #f4f7fa;
+            color: #333;
+        }
+        nav { margin-bottom: 20px; }
+        nav a { margin-right: 10px; text-decoration: none; font-weight: bold; color: #222; }
+        nav a:hover { color: #00b894; }
+        form {
+            max-width: 600px;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 6px;
+        }
+        input[type="submit"] {
+            width: auto;
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        input[type="submit"]:hover {
+            background: #43a047;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: white;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encuesta sobre Linux</h1>
+    <form action="#" method="post">
+        <label>Nombre:
+            <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+        </label>
+
+        <label>Email:
+            <input type="email" name="email" placeholder="ejemplo@correo.com" required>
+        </label>
+
+        <label>¿Qué distribución usas actualmente?
+            <select name="distro" required>
+                <option value="">--Selecciona--</option>
+                <option value="ubuntu">Ubuntu</option>
+                <option value="debian">Debian</option>
+                <option value="arch">Arch Linux</option>
+                <option value="fedora">Fedora</option>
+                <option value="opensuse">openSUSE</option>
+                <option value="otra">Otra</option>
+            </select>
+        </label>
+
+        <label>¿Qué tipo de usuario te consideras?</label>
+        <label><input type="radio" name="nivel" value="principiante" required> Principiante</label>
+        <label><input type="radio" name="nivel" value="intermedio"> Intermedio</label>
+        <label><input type="radio" name="nivel" value="avanzado"> Avanzado</label>
+
+        <label>¿Para qué usas Linux? (puedes elegir varias opciones)</label>
+        <label><input type="checkbox" name="uso[]" value="estudio"> Estudio</label>
+        <label><input type="checkbox" name="uso[]" value="trabajo"> Trabajo</label>
+        <label><input type="checkbox" name="uso[]" value="servidores"> Servidores</label>
+        <label><input type="checkbox" name="uso[]" value="juegos"> Juegos</label>
+        <label><input type="checkbox" name="uso[]" value="otro"> Otro</label>
+
+        <label>Comentarios:
+            <textarea name="comentarios" rows="4" placeholder="Comparte tu opinión sobre Linux..."></textarea>
+        </label>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <footer>
+        &copy; 2025 - Proyecto Linux | Desarrollado para práctica HTML
+    </footer>
+</body>
+</html>
+

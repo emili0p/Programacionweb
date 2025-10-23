@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparación de distribuciones de Linux</title>
+    <style>
+        body {font-family: "Segoe UI", Arial, sans-serif; margin: 0; padding: 0; background: #f4f7fa; color: #333;}
+        header {background: #222; color: white; text-align: center; padding: 30px;}
+        header h1 {margin: 0; font-size: 2.2em;}
+        nav {background: #444; padding: 12px; text-align: center;}
+        nav a {color: white; text-decoration: none; margin: 0 12px; font-weight: bold; transition: color 0.3s;}
+        nav a:hover {color: #00b894;}
+        main {max-width: 1000px; margin: 30px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
+        .table-wrap {overflow-x: auto; border-radius: 6px; box-shadow: 0 0 0 1px rgba(0,0,0,0.06);}
+        table {width: 100%; border-collapse: collapse; min-width: 900px;}
+        caption {text-align: left; font-weight: bold; margin-bottom: 8px; font-size: 1.1rem;}
+        th, td {padding: 10px 12px; border-bottom: 1px solid #ddd; vertical-align: top; text-align: left;}
+        thead th {background: #f0f0f0; position: sticky; top: 0;}
+        th {font-size: 0.95rem;}
+        td {font-size: 0.92rem;}
+        tr:nth-child(even) {background: #fafafa;}
+        .small {font-size: 0.9rem; color: #555;}
+        footer {background: #222; color: white; text-align: center; padding: 15px; margin-top: 30px;}
+        @media (max-width: 600px) {th, td {padding: 8px; font-size: 0.85rem;}}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comparación de distribuciones de Linux</h1>
+    </header>
+
+    <main>
+        <p class="small">Tabla comparativa con datos útiles para escoger una distribución según experiencia, uso y gestión de paquetes.</p>
+
+        <div class="table-wrap" role="region" aria-label="Comparación de distribuciones de Linux">
+            <table>
+                <caption>Comparación de distribuciones populares</caption>
+                <thead>
+                    <tr>
+                        <th>Distro</th>
+                        <th>Año</th>
+                        <th>Base</th>
+                        <th>Gestor de paquetes</th>
+                        <th>Modelo de lanzamiento</th>
+                        <th>Entorno(s) recomendado(s)</th>
+                        <th>Nivel de dificultad</th>
+                        <th>Casos de uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ubuntu</td>
+                        <td>2004</td>
+                        <td>Debian</td>
+                        <td>APT / dpkg</td>
+                        <td>LTS (cada 2 años) + releases regulares</td>
+                        <td>GNOME (por defecto)</td>
+                        <td>Principiantes / Intermedio</td>
+                        <td>Escritorio, servidores, nube, WSL</td>
+                    </tr>
+                    <tr>
+                        <td>Debian</td>
+                        <td>1993</td>
+                        <td>Independiente</td>
+                        <td>APT / dpkg</td>
+                        <td>Estable (congelaciones antes de release)</td>
+                        <td>GNOME / XFCE / LXDE</td>
+                        <td>Todos (más manual en algunos casos)</td>
+                        <td>Servidores, base para otras distros</td>
+                    </tr>
+                    <tr>
+                        <td>Fedora</td>
+                        <td>2003</td>
+                        <td>Red Hat (comunidad)</td>
+                        <td>dnf / rpm</td>
+                        <td>Semestral</td>
+                        <td>GNOME</td>
+                        <td>Intermedio</td>
+                        <td>Desarrollo, tecnologías nuevas</td>
+                    </tr>
+                    <tr>
+                        <td>Arch Linux</td>
+                        <td>2002</td>
+                        <td>Independiente</td>
+                        <td>pacman</td>
+                        <td>Rolling release</td>
+                        <td>Sin entorno por defecto</td>
+                        <td>Avanzado</td>
+                        <td>Control total y personalización</td>
+                    </tr>
+                    <tr>
+                        <td>Manjaro</td>
+                        <td>2011</td>
+                        <td>Basada en Arch</td>
+                        <td>pacman + pamac</td>
+                        <td>Semi-rolling</td>
+                        <td>XFCE, KDE, GNOME</td>
+                        <td>Intermedio</td>
+                        <td>Escritorio amigable con base Arch</td>
+                    </tr>
+                    <tr>
+                        <td>openSUSE</td>
+                        <td>2005</td>
+                        <td>SUSE</td>
+                        <td>zypper / rpm</td>
+                        <td>Leap (estable) / Tumbleweed (rolling)</td>
+                        <td>KDE Plasma, GNOME</td>
+                        <td>Intermedio / Avanzado</td>
+                        <td>Escritorio, servidores</td>
+                    </tr>
+                    <tr>
+                        <td>AlmaLinux / Rocky Linux</td>
+                        <td>2021</td>
+                        <td>RHEL-compatible</td>
+                        <td>dnf / rpm</td>
+                        <td>Estables (compatibles con RHEL)</td>
+                        <td>GNOME (común en servidores con GUI)</td>
+                        <td>Intermedio / Empresas</td>
+                        <td>Servidores empresariales</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="small" style="margin-top:12px;">
+            Nota: El "nivel de dificultad" es orientativo. Muchas distribuciones tienen instaladores y entornos que facilitan la experiencia.
+        </p>
+    </main>
+
+    <footer>
+        &copy; 2025 - Proyecto Linux | Desarrollado para práctica HTML
+    </footer>
+</body>
+</html>
+

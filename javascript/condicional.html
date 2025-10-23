@@ -1,0 +1,30 @@
+<!--Emilio izquierdo montero 
+| Condicional.html | 
+23/10/2025 | 
+Programa de que numero es mayor version 2en Javascript-->
+
+<!DOCTYPE html>
+<html>
+    <head><meta charset="utf-8"></head>
+    <script>
+
+        let dato1 = window.prompt("Primer Numero?","")
+        var num1 = parseInt(dato1)
+
+        let dato2 = window.prompt("Segundo Numero?","")
+        var num2 = parseInt(dato2)
+
+        if (num1 > num2)
+        {
+            alert(`El numero mayor es ${num1}`);
+        }
+        else if (num2 > num1)
+        {
+            alert(`El numero mayor es ${num2}`);
+        }
+        else if (num2 == num1)
+        {
+            alert(`Ambos Numeros Son Iguales`);
+        }
+    </script>
+</html>

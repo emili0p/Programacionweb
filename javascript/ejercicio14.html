@@ -1,0 +1,30 @@
+<!--EMILIO IZQUIERDO MONTERO
+| Ejercicio14J.html | 22/10/2025 | 
+Programa de Introducir Valores por Teclado se Detiene cuando el Valor Es 7 en Javascript-->
+<!DOCTYPE html>
+<html>
+    <head><meta charset="utf-8"></head>
+    <body>
+        <!--Funcion Principal-->
+        <script language="JavaScript">
+        {
+            var num = 0;
+            while (num !== 7)
+            {
+                let dato=prompt("Introduce un numero del 1 al 10: ",'');
+                num = parseInt(dato);
+
+                document.write(`El numero introducido es: ${num} </br>`);
+
+            }
+                document.write(`</br><h2>
+                                Fin del programa </br>
+                                El Numero introducido fue 7.
+                                </h2>
+                            `);
+
+            document.write(`</br> Ultimo numero introducido es ${num}`);
+        }
+        </script>
+    </body>
+</html>

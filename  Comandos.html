@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>50 Etiquetas HTML</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #444; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    code { background-color: #eee; padding: 2px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Tabla de 50 etiquetas HTML</h1>
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Sintaxis</th>
+      <th>Ejemplo</th>
+    </tr>
+    <tr>
+      <td>&lt;html&gt;</td>
+      <td>Define el documento HTML</td>
+      <td><code>&lt;html&gt;...&lt;/html&gt;</code></td>
+      <td><code>&lt;html&gt;&lt;/html&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;head&gt;</td>
+      <td>Contiene metadatos e información del documento</td>
+      <td><code>&lt;head&gt;...&lt;/head&gt;</code></td>
+      <td><code>&lt;head&gt;&lt;title&gt;Mi web&lt;/title&gt;&lt;/head&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;title&gt;</td>
+      <td>Título mostrado en la pestaña del navegador</td>
+      <td><code>&lt;title&gt;texto&lt;/title&gt;</code></td>
+      <td><code>&lt;title&gt;Mi página&lt;/title&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;body&gt;</td>
+      <td>Contenido visible de la página</td>
+      <td><code>&lt;body&gt;...&lt;/body&gt;</code></td>
+      <td><code>&lt;body&gt;Hola&lt;/body&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;h1&gt; - &lt;h6&gt;</td>
+      <td>Encabezados de nivel 1 a 6</td>
+      <td><code>&lt;h1&gt;texto&lt;/h1&gt;</code></td>
+      <td><code>&lt;h2&gt;Subtítulo&lt;/h2&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;p&gt;</td>
+      <td>Párrafo de texto</td>
+      <td><code>&lt;p&gt;texto&lt;/p&gt;</code></td>
+      <td><code>&lt;p&gt;Hola mundo&lt;/p&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;br&gt;</td>
+      <td>Salto de línea</td>
+      <td><code>&lt;br&gt;</code></td>
+      <td>Hola&lt;br&gt;mundo</td>
+    </tr>
+    <tr>
+      <td>&lt;hr&gt;</td>
+      <td>Línea horizontal</td>
+      <td><code>&lt;hr&gt;</code></td>
+      <td><code>Texto&lt;hr&gt;Más texto</code></td>
+    </tr>
+    <tr>
+      <td>&lt;a&gt;</td>
+      <td>Enlace a otra página</td>
+      <td><code>&lt;a href="url"&gt;texto&lt;/a&gt;</code></td>
+      <td><code>&lt;a href="https://google.com"&gt;Google&lt;/a&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;img&gt;</td>
+      <td>Inserta una imagen</td>
+      <td><code>&lt;img src="ruta" alt="texto"&gt;</code></td>
+      <td><code>&lt;img src="foto.jpg" alt="Foto"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;ul&gt;</td>
+      <td>Lista desordenada</td>
+      <td><code>&lt;ul&gt;...&lt;/ul&gt;</code></td>
+      <td><code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;ol&gt;</td>
+      <td>Lista ordenada</td>
+      <td><code>&lt;ol&gt;...&lt;/ol&gt;</code></td>
+      <td><code>&lt;ol&gt;&lt;li&gt;1&lt;/li&gt;&lt;/ol&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;li&gt;</td>
+      <td>Elemento de lista</td>
+      <td><code>&lt;li&gt;texto&lt;/li&gt;</code></td>
+      <td><code>&lt;li&gt;Elemento&lt;/li&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;table&gt;</td>
+      <td>Crea una tabla</td>
+      <td><code>&lt;table&gt;...&lt;/table&gt;</code></td>
+      <td><code>&lt;table&gt;&lt;/table&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;tr&gt;</td>
+      <td>Fila de tabla</td>
+      <td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td>
+      <td><code>&lt;tr&gt;&lt;td&gt;dato&lt;/td&gt;&lt;/tr&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;td&gt;</td>
+      <td>Celda de tabla</td>
+      <td><code>&lt;td&gt;texto&lt;/td&gt;</code></td>
+      <td><code>&lt;td&gt;Hola&lt;/td&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;th&gt;</td>
+      <td>Celda de encabezado en tabla</td>
+      <td><code>&lt;th&gt;texto&lt;/th&gt;</code></td>
+      <td><code>&lt;th&gt;Nombre&lt;/th&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;caption&gt;</td>
+      <td>Título de tabla</td>
+      <td><code>&lt;caption&gt;texto&lt;/caption&gt;</code></td>
+      <td><code>&lt;caption&gt;Mi tabla&lt;/caption&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;form&gt;</td>
+      <td>Formulario de entrada</td>
+      <td><code>&lt;form&gt;...&lt;/form&gt;</code></td>
+      <td><code>&lt;form&gt;&lt;/form&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;input&gt;</td>
+      <td>Campo de entrada</td>
+      <td><code>&lt;input type="text"&gt;</code></td>
+      <td><code>&lt;input type="text"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;button&gt;</td>
+      <td>Botón clickeable</td>
+      <td><code>&lt;button&gt;texto&lt;/button&gt;</code></td>
+      <td><code>&lt;button&gt;Enviar&lt;/button&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;label&gt;</td>
+      <td>Etiqueta para un input</td>
+      <td><code>&lt;label for="id"&gt;texto&lt;/label&gt;</code></td>
+      <td><code>&lt;label for="name"&gt;Nombre:&lt;/label&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;select&gt;</td>
+      <td>Menú desplegable</td>
+      <td><code>&lt;select&gt;...&lt;/select&gt;</code></td>
+      <td><code>&lt;select&gt;&lt;option&gt;A&lt;/option&gt;&lt;/select&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;option&gt;</td>
+      <td>Opción en un select</td>
+      <td><code>&lt;option&gt;texto&lt;/option&gt;</code></td>
+      <td><code>&lt;option&gt;Opción 1&lt;/option&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;textarea&gt;</td>
+      <td>Área de texto</td>
+      <td><code>&lt;textarea&gt;texto&lt;/textarea&gt;</code></td>
+      <td><code>&lt;textarea&gt;Hola&lt;/textarea&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;div&gt;</td>
+      <td>Contenedor genérico</td>
+      <td><code>&lt;div&gt;...&lt;/div&gt;</code></td>
+      <td><code>&lt;div&gt;Caja&lt;/div&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;span&gt;</td>
+      <td>Contenedor en línea</td>
+      <td><code>&lt;span&gt;texto&lt;/span&gt;</code></td>
+      <td><code>&lt;span&gt;Rojo&lt;/span&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;strong&gt;</td>
+      <td>Texto en negritas semánticas</td>
+      <td><code>&lt;strong&gt;texto&lt;/strong&gt;</code></td>
+      <td><code>&lt;strong&gt;Importante&lt;/strong&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;b&gt;</td>
+      <td>Texto en negritas (sin semántica)</td>
+      <td><code>&lt;b&gt;texto&lt;/b&gt;</code></td>
+      <td><code>&lt;b&gt;Hola&lt;/b&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;i&gt;</td>
+      <td>Texto en cursiva</td>
+      <td><code>&lt;i&gt;texto&lt;/i&gt;</code></td>
+      <td><code>&lt;i&gt;Itálica&lt;/i&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;em&gt;</td>
+      <td>Texto enfatizado</td>
+      <td><code>&lt;em&gt;texto&lt;/em&gt;</code></td>
+      <td><code>&lt;em&gt;Importante&lt;/em&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;u&gt;</td>
+      <td>Texto subrayado</td>
+      <td><code>&lt;u&gt;texto&lt;/u&gt;</code></td>
+      <td><code>&lt;u&gt;Subrayado&lt;/u&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;mark&gt;</td>
+      <td>Texto resaltado</td>
+      <td><code>&lt;mark&gt;texto&lt;/mark&gt;</code></td>
+      <td><code>&lt;mark&gt;Importante&lt;/mark&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;small&gt;</td>
+      <td>Texto pequeño</td>
+      <td><code>&lt;small&gt;texto&lt;/small&gt;</code></td>
+      <td><code>&lt;small&gt;Nota&lt;/small&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;sup&gt;</td>
+      <td>Superíndice</td>
+      <td><code>&lt;sup&gt;texto&lt;/sup&gt;</code></td>
+      <td><code>X&lt;sup&gt;2&lt;/sup&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;sub&gt;</td>
+      <td>Subíndice</td>
+      <td><code>&lt;sub&gt;texto&lt;/sub&gt;</code></td>
+      <td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td>
+    </tr>
+    <tr>
+      <td>&lt;code&gt;</td>
+      <td>Fragmento de código</td>
+      <td><code>&lt;code&gt;...&lt;/code&gt;</code></td>
+      <td><code>&lt;code&gt;print("Hola")&lt;/code&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;pre&gt;</td>
+      <td>Texto preformateado</td>
+      <td><code>&lt;pre&gt;texto&lt;/pre&gt;</code></td>
+      <td><pre>  Texto   exacto</pre></td>
+    </tr>
+    <tr>
+      <td>&lt;blockquote&gt;</td>
+      <td>Cita en bloque</td>
+      <td><code>&lt;blockquote&gt;texto&lt;/blockquote&gt;</code></td>
+      <td><code>&lt;blockquote&gt;Cita&lt;/blockquote&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;q&gt;</td>
+      <td>Cita corta</td>
+      <td><code>&lt;q&gt;texto&lt;/q&gt;</code></td>
+      <td><code>&lt;q&gt;Frase&lt;/q&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;audio&gt;</td>
+      <td>Reproduce audio</td>
+      <td><code>&lt;audio controls&gt;...&lt;/audio&gt;</code></td>
+      <td><code>&lt;audio controls src="audio.mp3"&gt;&lt;/audio&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;video&gt;</td>
+      <td>Reproduce video</td>
+      <td><code>&lt;video controls&gt;...&lt;/video&gt;</code></td>
+      <td><code>&lt;video controls src="video.mp4"&gt;&lt;/video&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;source&gt;</td>
+      <td>Fuente multimedia en audio/video</td>
+      <td><code>&lt;source src="ruta" type="formato"&gt;</code></td>
+      <td><code>&lt;source src="cancion.mp3" type="audio/mpeg"&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;iframe&gt;</td>
+      <td>Inserta contenido externo</td>
+      <td><code>&lt;iframe src="url"&gt;&lt;/iframe&gt;</code></td>
+      <td><code>&lt;iframe src="https://youtube.com"&gt;&lt;/iframe&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;nav&gt;</td>
+      <td>Sección de navegación</td>
+      <td><code>&lt;nav&gt;...&lt;/nav&gt;</code></td>
+      <td><code>&lt;nav&gt;&lt;a&gt;Inicio&lt;/a&gt;&lt;/nav&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;header&gt;</td>
+      <td>Encabezado de página</td>
+      <td><code>&lt;header&gt;...&lt;/header&gt;</code></td>
+      <td><code>&lt;header&gt;Logo&lt;/header&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;footer&gt;</td>
+      <td>Pie de página</td>
+      <td><code>&lt;footer&gt;...&lt;/footer&gt;</code></td>
+      <td><code>&lt;footer&gt;Derechos&lt;/footer&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;section&gt;</td>
+      <td>Sección genérica</td>
+      <td><code>&lt;section&gt;...&lt;/section&gt;</code></td>
+      <td><code>&lt;section&gt;Noticias&lt;/section&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;article&gt;</td>
+      <td>Contenido independiente</td>
+      <td><code>&lt;article&gt;...&lt;/article&gt;</code></td>
+      <td><code>&lt;article&gt;Post&lt;/article&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;aside&gt;</td>
+      <td>Contenido lateral</td>
+      <td><code>&lt;aside&gt;...&lt;/aside&gt;</code></td>
+      <td><code>&lt;aside&gt;Publicidad&lt;/aside&gt;</code></td>
+    </tr>
+    <tr>
+      <td>&lt;main&gt;</td>
+      <td>Contenido principal</td>
+      <td><code>&lt;main&gt;...&lt;/main&gt;</code></td>
+</html>

@@ -1,0 +1,38 @@
+<!--Emilio izquierdo montero 
+| Condicional3.html | 
+23/10/2025 | -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Condicionales 3 - Notas del alumno</title>
+</head>
+<body>
+
+<script>
+
+    let dato1, dato2, dato3;
+    let nota1, nota2, nota3, media, resultado;
+    dato1 = window.prompt("Introduce la primera nota:", "0");
+    nota1 = parseFloat(dato1); 
+
+    dato2 = window.prompt("Introduce la segunda nota:", "0");
+    nota2 = parseFloat(dato2);
+
+    dato3 = window.prompt("Introduce la tercera nota:", "0");
+    nota3 = parseFloat(dato3);
+
+    media = (nota1 + nota2 + nota3) / 3;
+    if (media >= 5) {
+        resultado = "Aprobado ";
+    } else {
+        resultado = "Suspendido ";
+    }
+
+    document.write(`<h3>La media es: ${media.toFixed(2)}</h3>`);
+    document.write(`<h3>Resultado final: ${resultado}</h3>`);
+    document.write(`<p>Gracias por usar el sistema de evaluación.</p>`);
+</script>
+
+</body>
+</html>

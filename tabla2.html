@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario con actividades</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    table {
+      border-collapse: collapse;
+      margin: auto;
+      width: 90%;
+      table-layout: fixed; /* Todas las celdas con mismo ancho */
+    }
+    td, th {
+      border: 1px solid #333;
+      width: 14.2%; /* 7 columnas → 100/7 */
+      height: 100px; /* Misma altura */
+      text-align: center;
+      vertical-align: top;
+      padding: 5px;
+      background-color: #fff;
+    }
+    th {
+      background-color: #2e86c1;
+      color: white;
+      font-weight: bold;
+    }
+    tr:nth-child(even) td {
+      background-color: #f2f2f2; /* filas alternadas */
+    }
+    .titulo {
+      font-size: 22px;
+      color: #145a32;
+      font-weight: bold;
+      margin: 20px;
+    }
+    img {
+      display: block;
+      margin: auto;
+      margin-top: 5px;
+    }
+    ul, ol {
+      text-align: left;
+      margin: 5px;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="titulo">📅 Septiembre de 2025 📅</div>
+
+  <img src="https://conecta.tec.mx/sites/default/files/styles/header_full/public/2022-02/historia-y-curiosidades-de-la-bandera-de-mexico.webp?itok=ql5LPI54" alt="bandera" width="150">
+
+  <table>
+    <tr>
+      <th>Domingo</th>
+      <th>Lunes</th>
+      <th>Martes</th>
+      <th>Miércoles</th>
+      <th>Jueves</th>
+      <th>Viernes</th>
+      <th>Sábado</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>8</td>
+      <td>9 <br>Actividad: Taller de arte 🎨</td>
+      <td>10</td>
+      <td>11 <br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Football_icon.svg/1024px-Football_icon.svg.png" width="40"></td>
+      <td>12</td>
+      <td>13 <br>Cumpleaños de Fer 🎂</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>15</td>
+      <td>16 <br>Actividad: Ensayo del grupo 🎤</td>
+      <td>17</td>
+      <td>18</td>
+      <td>19</td>
+      <td>20 <br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Cat_icon.svg/800px-Cat_icon.svg.png" width="40"></td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>22 <br>Cumpleaños de Luis 🎉</td>
+      <td>23</td>
+      <td>24 <br>Actividad: Reunión escolar 📚</td>
+      <td>25</td>
+      <td>26</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>29 <br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Musical_notes_icon.svg/1024px-Musical_notes_icon.svg.png" width="40"></td>
+      <td>30 <br>Examen de Martha ✏️
+        <ul>
+          <li>Estudiar matemáticas</li>
+          <li>Repasar historia</li>
+          <li>Practicar inglés</li>
+        </ul>
+        <ol>
+          <li>Llegar temprano</li>
+          <li>Traer lápiz y borrador</li>
+          <li>Entregar el examen</li>
+        </ol>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+</body>
+</html>
