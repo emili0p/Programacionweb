@@ -1,0 +1,28 @@
+<!-- emilio izquierdo montero 
+| Condicional10.html 
+| 24/10/2025 
+-->
+
+<!DOCTYPE html>
+
+
+<html>
+    <body>
+        <script>
+
+            let edad = parseInt(prompt("Introduce tu edad:", ""));
+
+            if (edad < 1 || edad > 120) {
+                document.write("<h3>Error: Edad no válida. Debe ser entre 1 y 120 años.</h3>");
+            } 
+            else {
+                if (edad >= 18) {
+                    document.write("<h3>Si tiene permiso de acceso</h3>");
+                } else {
+                    document.write("<h3>No tiene permiso de acceso (menor de edad)</h3>");
+                }
+            }
+
+        </script>
+    </body>
+</html>

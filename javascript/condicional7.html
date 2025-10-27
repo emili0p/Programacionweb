@@ -1,0 +1,24 @@
+<!-- emilio izquierdo montero
+| Condicional7J.html 
+| 24/10/2025 
+|  Programa de si eres mayor de 18 años & de FP-->
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+
+            let tipo = prompt("¿Que tipo de estudiante eres? (FP/Bachillerato)", "");
+            let edad = parseInt(prompt("¿Cuantos años tienes?", ""));
+    
+            if (tipo.toLowerCase() == "fp" && edad >= 18) 
+            {
+                document.write("<h3>Bienvenido(a) al portal web</h3>");
+            } 
+            else 
+            {
+                document.write("<h3>NO tienes acceso al portal web</h3>");
+            }
+
+        </script>
+    </body>
+</html>

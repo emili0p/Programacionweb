@@ -1,0 +1,28 @@
+<!--emilio izquierdo montero 
+| condicional6.html 
+| 24/10/2025 
+|  Programa de si pones el modelo fiest/focus te da un respectivo descuento en el carro -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+
+            let marca, modelo, descuento = 0;
+            
+            marca = prompt("Marca?","0");
+            modelo = prompt("Modelo?","0");
+
+            if ((marca == "ford") && (modelo == "fiesta"))
+            {
+                descuento = 5;
+            } 
+
+            if ((marca == "ford") && (modelo == "focus"))
+            {
+                descuento = 10;
+            } 
+            document.write(`<h3> Su descuento es de ${descuento} </h3> `);
+</script>
+</body>
+</html>
