@@ -1,0 +1,29 @@
+<!--emilio izquierdo montero
+| Condicional5.html 
+| 24/10/2025 |
+programa que simula un dado-->
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+
+    <body>
+        <p id="salida"></p>
+        <script>
+
+            let suerte = (Math.random() * 6);
+            let dado = parseInt(suerte) + 1;
+
+            let obj1 = document.getElementById("salida")
+
+            if (dado > 3)
+            {
+                obj1.innerHTML = `Has ganado, ha salido el numero ${dado} `;
+            } 
+            else
+            {
+                obj1.innerHTML = `Lo siento, ha salido el numero ${dado} `;
+            } 
+
+    </script>
+</body>
+</html>
