@@ -1,0 +1,50 @@
+<!--emilio izquierdo montero-->
+<!--Ejercicio 16 26/10/2025-->
+<!--Programa que muestra los días del mes mediante condicionales con JS-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ES6 Condicionales 16</title>
+</head>
+<body>
+<script>
+    // Programa que indica los días que tiene un mes introducido por el usuario
+
+    let dia, mes, año;
+
+    // Pedir el número del mes al usuario
+    mes = prompt('Introduzca el número del mes (1 al 12):', '');
+    mes = parseInt(mes); // Convertir el valor a número
+
+    // Validar que el número esté dentro del rango permitido
+    if (mes >= 1 && mes <= 12)
+    {
+        // Comprobar los meses con 31 días
+        if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12)
+        {
+            document.write('Este mes tiene 31 días.');
+        }
+        else
+        {
+            // Comprobar si el mes es febrero
+            if (mes == 2)
+            {
+                document.write('Este mes tiene 28 o 29 días (según si es año bisiesto).');
+            }
+            else
+            {
+                document.write('Este mes tiene 30 días.');
+            }
+        }
+    }
+    else
+    {
+        // Si el número no es válido, mostrar mensaje de error
+        document.write('Error: Debe ingresar un número del 1 al 12.');
+    }
+
+</script>
+</body>
+</html>

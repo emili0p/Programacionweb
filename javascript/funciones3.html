@@ -1,0 +1,26 @@
+<!--emilio izquierdo montero-->
+<!--Ejercicio 3 26/10/2025-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Funciones 3</title>
+</head>
+<body>
+<script>
+    // Función que calcula el cuadrado de un número
+    // El parámetro "numero" tiene un valor por defecto de 1 si no se recibe ninguno
+    function Calcula(numero = 1)
+    {
+        let calculo = numero * numero;  // Variable local que almacena el resultado
+        document.write(`<p>Resultado = ${calculo}</p>`);
+    }
+</script>
+
+<!-- Botones que ejecutan la función con diferentes valores -->
+<input type="button" onclick="Calcula()" value="Cálculo">
+<input type="button" onclick="Calcula(5)" value="Otro Cálculo">
+
+</body>
+</html>

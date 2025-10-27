@@ -1,0 +1,45 @@
+<!--EMILIO IZQUIERDO MONTERO-->
+<!--Ejercicio 5 26/10/2025-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Funciones 5</title>
+</head>
+<body>
+<script>
+    // Función tradicional que multiplica dos números
+    let multipli = function(x, y)
+    {
+        return x * y;
+    }
+
+    // Función que calcula la potencia de un número (x elevado a y)
+    let expon = function(x, y)
+    {
+        return Math.pow(x, y);
+    }
+
+    // Función flecha (Arrow Function) que suma dos números
+    let suma = (x, y) => { return x + y; }
+
+    // Nueva función flecha que resta dos números
+    let resta = (x, y) => { return x - y; }
+
+    // Pruebas de las funciones
+    var result = multipli(5, 2);
+    alert("Multiplicación: " + result);
+
+    result = expon(3, 4);
+    alert("Potencia: " + result);
+
+    result = suma(3, 4);
+    alert("Suma: " + result);
+
+    result = resta(10, 6);
+    alert("Resta: " + result);
+
+</script>
+</body>
+</html>
