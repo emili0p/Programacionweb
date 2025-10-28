@@ -1,0 +1,32 @@
+<!-- emilio izquierdo montero
+| Forms2.html 
+| 28/10/2025 | Programa que calcula el 10% en Javascript-->
+<!DOCTYPE html><!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular 10%</title>
+</head>
+<body>
+    <h2>Calcular el 10% de un valor</h2>
+    
+    <form onsubmit="calcularPorcentaje(event)">
+        <label for="valor">Introduce un valor:</label>
+        <input type="number" id="valor" step="any" required>
+        <button type="submit">Calcular 10%</button>
+    </form>
+    
+    <div id="resultado"></div>
+
+    <script>
+        function calcularPorcentaje(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            
+            const valor = parseFloat(document.getElementById('valor').value);
+            const porcentaje = valor * 0.10;
+            
+            document.getElementById('resultado').innerHTML = 
+                `El 10% de ${valor} es: ${porcentaje}`;
+        }
+    </script>
+</body>
+</html>

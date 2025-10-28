@@ -1,0 +1,25 @@
+<!-- emilio izquierdo montero 
+| Forms5.html 
+| 28/10/2025 
+| Programa que da entrada de datos por el slide en Javascript-->
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+    function ProcessDatos() {
+    let objx = document.getElementById("Rangovalon").value;
+    document.getElementById("resultado").innerHTML = objx;
+    }
+    
+</script>
+</head>
+
+<body>
+    
+<h3>Entrada de datos por 'Slide'</h3>
+<input type="range" id="Rangovalon" value="50" onchange="ProcessDatos()">
+<p id="resultado"></p>
+
+</body>
+</html>

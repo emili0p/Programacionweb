@@ -1,0 +1,23 @@
+<!-- emilio izquierdo montero
+| Forms1.html 
+| 28/10/2025 | Programa que te desea un buen dia Javascript-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Datos en formularios</title>
+        <script>
+            function saludo() {
+                let nom_usuario = document.fdatos.entrada.value;
+                document.getElementById("resultado").innerHTML = `Hola, buen dia ${nom_usuario}`;
+            }
+        </script>
+    </head>
+
+<body>
+    <form name="fdatos">
+        Escribe tu nombre: <input type="text" size="10" name="entrada"/>
+        <input type="button" value="Pulsa Aqui" onclick="saludo()" />
+    </form>
+    <div id="resultado"></div>
+</body>
+</html>
