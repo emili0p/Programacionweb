@@ -1,0 +1,70 @@
+<!---->
+<!--Ejercicio Forms 12 28/10/2025-->
+<!--Programa que calcula el peso de referencia según altura, edad, sexo y peso actual-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 12</title>
+</head>
+<body>
+<script>
+    // Función que calcula el peso de referencia según los parámetros recibidos
+    function pesoreferencia(datoaltura = 0, datapeso = 0, datosedad = 0, datosexo = "H")
+    {
+        let altura = parseFloat(datoaltura);
+        let peso = parseFloat(datapeso);
+        let edad = parseFloat(datosedad);
+        let sexo = datosexo.toUpperCase(); // Convierte a mayúscula
+
+        // Validar datos numéricos
+        if (isNaN(altura) || isNaN(peso) || isNaN(edad))
+        {
+            document.getElementById("resultado").innerHTML = "Por favor, ingresa valores válidos.";
+            return;
+        }
+
+        // Calcular peso de referencia según la fórmula
+        let pesoRef = 50 + ((altura - 150) / 4) * 3 + ((edad - 20) / 4);
+
+        // Si es mujer, multiplicar por 0.9
+        if (sexo === "M")
+        {
+            pesoRef = pesoRef * 0.9;
+        }
+
+        // Mostrar resultado con formato
+        document.getElementById("resultado").innerHTML =
+            `El peso aproximado de referencia es: <b>${pesoRef.toFixed(1)} kg</b>`;
+    }
+</script>
+
+<h2>Peso de Referencia</h2>
+
+<!-- Formulario -->
+<form name="fdatos">
+    Altura en cm (ej. 155):
+    <input type="text" name="altura" size="10"><br><br>
+
+    Peso en kg (ej. 68):
+    <input type="text" name="peso" size="10"><br><br>
+
+    Edad (ej. 45):
+    <input type="text" name="edad" size="10"><br><br>
+
+    Sexo (H/M):
+    <input type="text" name="sexo" size="10"><br><br>
+
+    <!-- Botones -->
+    <input type="button" id="pideal" value="Calcular"
+        onclick="pesoreferencia(fdatos.altura.value, fdatos.peso.value, fdatos.edad.value, fdatos.sexo.value)">
+    <input type="reset" value="Reset">
+</form>
+
+<br>
+<!-- Resultado -->
+<p id="resultado"></p>
+
+</body>
+</html>

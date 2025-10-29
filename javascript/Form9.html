@@ -1,0 +1,66 @@
+<!-- emilio izquierdo montero-->
+<!--Ejercicio Forms 9 28/10/2025-->
+<!--Programa que calcula la nota media ponderada de dos calificaciones-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 9</title>
+</head>
+<body>
+<script>
+    // Función que calcula la nota media ponderada
+    function calcularNota()
+    {
+        // Obtener valores ingresados por el usuario
+        let nota1 = parseFloat(document.fnotas.nota1.value);
+        let nota2 = parseFloat(document.fnotas.nota2.value);
+        let porc1 = parseFloat(document.fnotas.porc1.value);
+        let porc2 = parseFloat(document.fnotas.porc2.value);
+
+        // Validar que los porcentajes sumen 100
+        if ((porc1 + porc2) !== 100)
+        {
+            document.getElementById("resultado").innerHTML = 
+                "<b>Error:</b> la suma de los porcentajes debe ser 100%";
+            return;
+        }
+
+        // Calcular nota media ponderada
+        let notaFinal = (nota1 * (porc1 / 100)) + (nota2 * (porc2 / 100));
+
+        // Mostrar resultado
+        document.getElementById("resultado").innerHTML = 
+            `La nota media ponderada es: <b>${notaFinal.toFixed(2)}</b>`;
+    }
+</script>
+
+<h2>Cálculo de Notas</h2>
+
+<!-- Formulario de entrada -->
+<form name="fnotas">
+    <table>
+        <tr>
+            <td>Nota 1:</td>
+            <td><input type="text" name="nota1" size="5"></td>
+            <td>Porcentaje 1:</td>
+            <td><input type="text" name="porc1" size="5"></td>
+        </tr>
+        <tr>
+            <td>Nota 2:</td>
+            <td><input type="text" name="nota2" size="5"></td>
+            <td>Porcentaje 2:</td>
+            <td><input type="text" name="porc2" size="5"></td>
+        </tr>
+    </table>
+
+    <br>
+    <input type="button" value="Calcular" onclick="calcularNota()">
+</form>
+
+<!-- Resultado -->
+<p id="resultado"></p>
+
+</body>
+</html>

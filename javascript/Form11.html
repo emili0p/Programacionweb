@@ -1,0 +1,66 @@
+<!---->
+<!--Ejercicio Forms 11 28/10/2025-->
+<!--Programa que calcula el peso de referencia aproximado según altura, edad, sexo y peso actual-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 11</title>
+</head>
+<body>
+<script>
+    // Función que calcula el peso de referencia
+    function calcularPeso()
+    {
+        // Obtener valores del formulario
+        let altura = parseFloat(document.fdatos.altura.value);
+        let edad = parseFloat(document.fdatos.edad.value);
+        let sexo = document.fdatos.sexo.value; // "H" o "M"
+        let pesoActual = parseFloat(document.fdatos.peso.value);
+
+        // Validar datos
+        if (isNaN(altura) || isNaN(edad) || isNaN(pesoActual))
+        {
+            document.getElementById("resultado").innerHTML = "Por favor, introduce valores numéricos válidos.";
+            return;
+        }
+
+        // Aplicar fórmula base
+        let pesoReferencia = 50 + ((altura - 150) / 4) * 3 + ((edad - 20) / 4);
+
+        // Ajuste si es mujer
+        if (sexo === "M" || sexo === "m")
+        {
+            pesoReferencia *= 0.9;
+        }
+
+        // Mostrar resultado
+        document.getElementById("resultado").innerHTML = 
+            `<b>Peso de referencia:</b> ${pesoReferencia.toFixed(1)} kg<br>
+             <b>Peso actual:</b> ${pesoActual} kg<br>
+             <b>Diferencia:</b> ${(pesoActual - pesoReferencia).toFixed(1)} kg`;
+    }
+</script>
+
+<h2>Cálculo de Peso de Referencia</h2>
+
+<!-- Formulario -->
+<form name="fdatos">
+    Altura (cm): <input type="text" name="altura" size="5"><br><br>
+    Edad: <input type="text" name="edad" size="5"><br><br>
+    Sexo: 
+    <select name="sexo">
+        <option value="H">Hombre</option>
+        <option value="M">Mujer</option>
+    </select><br><br>
+    Peso actual (kg): <input type="text" name="peso" size="5"><br><br>
+
+    <input type="button" value="Calcular" onclick="calcularPeso()">
+</form>
+
+<!-- Resultado -->
+<p id="resultado"></p>
+
+</body>
+</html>

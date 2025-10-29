@@ -1,0 +1,58 @@
+<!-- emilio izquierdo montero -->
+<!--Ejercicio Forms 10 28/10/2025-->
+<!--Programa que calcula la diferencia en días entre dos fechas usando Moment.js-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 10</title>
+    <!-- Enlace a la librería Moment.js (CDN actualizado) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+<body>
+
+<h3>Calcular la diferencia entre dos fechas</h3>
+
+<!-- Formulario con dos campos de fecha -->
+<form>
+    Fecha de inicio:
+    <input type="date" id="start" onchange="getEventTime()">
+    <br><br>
+    Fecha final:
+    <input type="date" id="end" onchange="getEventTime()">
+</form>
+
+<!-- Donde se mostrará el resultado -->
+<p id="resultado"></p>
+
+<script>
+    // Función que obtiene las fechas y calcula la diferencia
+    function getEventTime()
+    {
+        // Obtener valores de las fechas seleccionadas
+        let start = document.getElementById("start").value;
+        let end = document.getElementById("end").value;
+
+        // Validar que ambas fechas estén seleccionadas
+        if (start === "" || end === "")
+        {
+            document.getElementById("resultado").innerHTML = "Selecciona ambas fechas.";
+            return;
+        }
+
+        // Convertir las fechas a objetos Moment
+        let fechaInicio = moment(start);
+        let fechaFin = moment(end);
+
+        // Calcular diferencia en días
+        let diferencia = fechaFin.diff(fechaInicio, "days");
+
+        // Mostrar resultado
+        document.getElementById("resultado").innerHTML =
+            `La diferencia entre las fechas es de <b>${diferencia}</b> días.`;
+    }
+</script>
+
+</body>
+</html>

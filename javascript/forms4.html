@@ -1,0 +1,47 @@
+<!--emilio izquierdo montero
+| Forms4JMJ.html 
+| 28/10/2025 
+| Programa que muestra al cuadrado y al cubo en Javascript-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calcular Potencias</title>
+</head>
+<body>
+    <h2>Calcular cuadrado y cubo de un número</h2>
+    
+    <form name="datos" onsubmit="calcularPotencias(event)">
+        <label>Introduce un número:</label>
+        <input type="number" name="numero" step="any" required>
+        <button type="submit">Calcular</button>
+        <br><br>
+        
+        Cuadrado: <input type="text" name="cuadrado" readonly>
+        <br><br>
+        Cubo: <input type="text" name="cubo" readonly>
+        <br><br>
+        <input type="reset" value="Limpiar">
+    </form>
+
+    <script>
+        //Con una función
+        function calcularPotencias(event) {
+            event.preventDefault();
+            
+            const numero = parseFloat(document.datos.numero.value);
+            
+            //Con al menos DOS funciones
+            document.datos.cuadrado.value = calcularCuadrado(numero);
+            document.datos.cubo.value = calcularCubo(numero);
+        }
+        
+        function calcularCuadrado(num) {
+            return num * num;
+        }
+        
+        function calcularCubo(num) {
+            return num * num * num;
+        }
+    </script>
+</body>
+</html>

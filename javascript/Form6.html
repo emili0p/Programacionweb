@@ -1,0 +1,47 @@
+<!-- emilio izquierdo montero -->
+<!--Ejercicio Forms 6 28/10/2025-->
+<!--Programa que obtiene un número y lo multiplica por el valor seleccionado en una lista-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 6</title>
+</head>
+<body>
+<script>
+    // Función que obtiene el número ingresado y el valor seleccionado de la lista
+    function calcula()
+    {
+        let numero = parseFloat(document.fdatos.entrada.value);   // Valor del input
+        let dato = document.getElementById("lista");              // Lista desplegable
+        let valor = parseFloat(dato.options[dato.selectedIndex].value); // Valor seleccionado
+
+        // Calcular resultado
+        let resultado = numero * valor;
+
+        // Mostrar el resultado en pantalla
+        document.getElementById("salida").innerHTML = `Resultado: ${resultado}`;
+    }
+</script>
+
+<!-- Formulario principal -->
+<form name="fdatos">
+    Introduce un número:
+    <input type="text" size="10" name="entrada" />
+    <b> x </b>
+
+    <!-- Lista desplegable -->
+    <select id="lista" onchange="calcula()">
+        <option value="1" selected>uno</option>
+        <option value="2">dos</option>
+        <option value="3">tres</option>
+        <option value="4">cuatro</option>
+    </select>
+</form>
+
+<!-- Lugar donde se mostrará el resultado -->
+<div id="salida"></div>
+
+</body>
+</html>

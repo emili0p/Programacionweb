@@ -1,0 +1,30 @@
+<!-- emilio izquierdo montero -->
+<!--Ejercicio Forms 5 28/10/2025-->
+<!--Programa que muestra el valor seleccionado de una barra deslizante (slider)-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 5</title>
+</head>
+<body>
+<script>
+    // Función que procesa el valor del control tipo "range" y lo muestra en pantalla
+    function ProcesaDatos()
+    {
+        let objx = document.getElementById("RangoValor").value;
+        document.getElementById("resultado").innerHTML = objx;
+    }
+</script>
+
+<h3>Entrada de datos por 'Slide'</h3>
+
+<!-- Barra deslizante -->
+<input type="range" id="RangoValor" value="50" min="0" max="100" onchange="ProcesaDatos()">
+
+<!-- Muestra el valor del slider -->
+<p id="resultado"></p>
+
+</body>
+</html>

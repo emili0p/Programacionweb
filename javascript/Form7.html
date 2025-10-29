@@ -1,0 +1,39 @@
+<!---->
+<!--Ejercicio Forms 7 29/10/2025-->
+<!--Programa que convierte grados Celsius a Fahrenheit-->
+<!-- EMILIO IZQUIERDO MONTERO -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 7</title>
+</head>
+<body>
+<script>
+    // Función que convierte de Celsius a Fahrenheit
+    function convertir()
+    {
+        // Obtener el valor ingresado por el usuario
+        let celsius = parseFloat(document.fdatos.entrada.value);
+
+        // Calcular la conversión
+        let fahrenheit = (celsius * 9/5) + 32;
+
+        // Mostrar el resultado en pantalla
+        document.getElementById("resultado").innerHTML =
+            `${celsius}°C equivalen a ${fahrenheit.toFixed(2)}°F`;
+    }
+</script>
+
+<!-- Formulario para ingresar la temperatura -->
+<form name="fdatos">
+    Introduce la temperatura en °C:
+    <input type="text" name="entrada" size="10">
+    <input type="button" value="Convertir" onclick="convertir()">
+</form>
+
+<!-- Resultado mostrado en pantalla -->
+<p id="resultado"></p>
+
+</body>
+</html>

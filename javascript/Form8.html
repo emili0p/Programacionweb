@@ -1,0 +1,56 @@
+<!-- emilio izquierdo montero -->
+<!--Ejercicio Forms 8 28/10/2025-->
+<!--Programa que convierte entre grados Celsius y Fahrenheit en ambas direcciones-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Forms 8</title>
+</head>
+<body>
+<script>
+    // Función para convertir de Celsius a Fahrenheit
+    function convertirCF()
+    {
+        let celsius = parseFloat(document.fdatos.entradaC.value);
+        let fahrenheit = (celsius * 9/5) + 32;
+
+        document.getElementById("resultadoC").innerHTML =
+            `${celsius}°C equivalen a ${fahrenheit.toFixed(2)}°F`;
+    }
+
+    // Función para convertir de Fahrenheit a Celsius
+    function convertirFC()
+    {
+        let fahrenheit = parseFloat(document.fdatos.entradaF.value);
+        let celsius = (fahrenheit - 32) * 5/9;
+
+        document.getElementById("resultadoF").innerHTML =
+            `${fahrenheit}°F equivalen a ${celsius.toFixed(2)}°C`;
+    }
+</script>
+
+<h3>Conversión de Temperaturas</h3>
+
+<!-- Formulario de conversiones -->
+<form name="fdatos">
+    <!-- Celsius a Fahrenheit -->
+    <p>
+        Introduce temperatura en °C:
+        <input type="text" name="entradaC" size="10">
+        <input type="button" value="Convertir a °F" onclick="convertirCF()">
+    </p>
+    <p id="resultadoC"></p>
+
+    <!-- Fahrenheit a Celsius -->
+    <p>
+        Introduce temperatura en °F:
+        <input type="text" name="entradaF" size="10">
+        <input type="button" value="Convertir a °C" onclick="convertirFC()">
+    </p>
+    <p id="resultadoF"></p>
+</form>
+
+</body>
+</html>

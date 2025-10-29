@@ -1,0 +1,90 @@
+<!---->
+<!--Ejercicio Forms 13 28/10/2025-->
+<!--Juego de apuestas con FORM: adivina el número del dado-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Forms 13 – Juego de apuestas</title>
+</head>
+<body>
+<script type="text/javascript">
+  // Coloca el dinero inicial y limpia campos
+  function init() {
+    document.game.dinero.value = 100;
+    document.game.dado.value = "";
+    document.game.res.value = "";
+    document.game.num.value = "";
+    document.game.apuesta.value = "";
+  }
+
+  // Lógica del juego
+  function calc() {
+    let Din  = parseInt(document.game.dinero.value);   // saldo actual
+    let Num  = parseInt(document.game.num.value);      // número elegido (1-6)
+    let Apu  = parseInt(document.game.apuesta.value);  // apuesta
+    let dado = Math.floor(Math.random() * 6) + 1;      // tiro de dado (1-6)
+    let nuevoSaldo = Din;
+
+    // Validaciones básicas
+    if (isNaN(Din) || isNaN(Num) || isNaN(Apu)) {
+      alert("Completa todos los campos con números válidos.");
+      return;
+    }
+    if (Num < 1 || Num > 6) {
+      alert("El número elegido debe estar entre 1 y 6.");
+      return;
+    }
+    if (Apu <= 0) {
+      alert("La apuesta debe ser mayor que 0.");
+      return;
+    }
+    if (Apu > Din) {
+      alert("No puedes apostar más de tu dinero disponible.");
+      return;
+    }
+
+    // Mostrar el dado tirado
+    document.game.dado.value = dado;
+
+    // Resultado
+    if (Num === dado) {
+      // Gana: suma el doble de la apuesta
+      nuevoSaldo = Din + (Apu * 2);
+      document.game.res.value = "¡Has ganado! +" + (Apu * 2);
+    } else {
+      // Pierde: resta la apuesta
+      nuevoSaldo = Din - Apu;
+      document.game.res.value = "Has perdido -" + Apu;
+    }
+
+    // Actualizar saldo
+    document.game.dinero.value = nuevoSaldo;
+
+    // Si quedó sin dinero, avisar
+    if (nuevoSaldo <= 0) {
+      alert("¡Has perdido todo tu dinero!");
+    }
+  }
+</script>
+
+<h1 align="center">JUEGO APUESTAS</h1>
+
+<form name="game" style="max-width: 420px; margin:auto; line-height: 1.8;">
+  Dinero: <input type="text" name="dinero" size="5"> &nbsp;
+  <input type="button" name="start" value="Start" onclick="init()"><br>
+
+  Elige un número del 1 al 6:
+  <input type="text" name="num" size="5"><br>
+
+  Introduce tu apuesta:
+  <input type="text" name="apuesta" size="5">
+  <input type="button" name="calc" value="Calcular" onclick="calc()"><br>
+
+  Número del dado: <input type="text" name="dado" size="5" readonly><br>
+  Resultado: <input type="text" name="res" size="15" readonly>
+</form>
+
+</body>
+</html>
