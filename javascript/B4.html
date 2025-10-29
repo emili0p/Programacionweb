@@ -1,0 +1,37 @@
+<!--emilio izquierdo montero-->
+<!--Ejercicio Bucles 4 28/10/2025-->
+<!--Programa que genera una pirámide de asteriscos según el tamaño indicado-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ES6 Bucles 4</title>
+</head>
+<body>
+<script>
+    // Declaración de variables
+    let fila;
+    let columna = parseInt(prompt("Introduce el tamaño: ", "0"));
+
+    // Bucle para cada fila
+    for (fila = 1; fila <= columna; fila++)
+    {
+        // Bucle para los espacios antes de los asteriscos
+        for (let espacios = columna - fila; espacios > 0; espacios--)
+        {
+            document.write("&nbsp;&nbsp;");  // espacio en HTML
+        }
+
+        // Bucle para los asteriscos en cada fila
+        for (let conta = 1; conta <= (2 * fila - 1); conta++)
+        {
+            document.write("*");
+        }
+
+        // Salto de línea después de cada fila
+        document.writeln("<br>");
+    }
+</script>
+</body>
+</html>

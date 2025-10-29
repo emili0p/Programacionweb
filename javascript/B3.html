@@ -1,0 +1,42 @@
+<!--emilio izquierdo montero-->
+<!--Ejercicio Bucles 3 28/10/2025-->
+<!--Programa que muestra una tabla generada con bucles for anidados-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ES6 Bucles 3</title>
+</head>
+<body>
+
+<!-- Aquí se mostrará la tabla generada -->
+<p id="central"></p>
+
+<script>
+    // Declarar variables
+    let i, j;
+    let x = "<table border='1' cellspacing='2' cellpadding='4'>";
+
+    // Bucle externo: crea 10 filas
+    for (i = 1; i <= 10; i++)
+    {
+        x = x + "<tr>"; // Inicia una nueva fila
+
+        // Bucle interno: imprime los números dentro de cada fila
+        for (j = 1; j <= i; j++)
+        {
+            x = x + `<td>El número es ${i}</td>`;
+        }
+
+        x = x + "</tr>"; // Cierra la fila
+    }
+
+    x = x + "</table>"; // Cierra la tabla
+
+    // Inserta la tabla en el elemento con id="central"
+    document.getElementById("central").innerHTML = x;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!--emilio izquierdo montero-->
+<!--Ejercicio Bucles 7 28/10/2025-->
+<!--Programa que genera tablas de multiplicar del número 1 hasta el número 2 ingresado-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ES6 Bucles 7</title>
+</head>
+<body>
+<script>
+    // Función que genera las tablas de multiplicar entre dos números
+    function generarTablas()
+    {
+        // Pedir los números al usuario
+        let num1 = parseInt(prompt("Introduce el primer número (1-10):"));
+        let num2 = parseInt(prompt("Introduce el segundo número (1-10):"));
+
+        // Validar que estén entre 1 y 10
+        if (isNaN(num1) || isNaN(num2) || num1 < 1 || num1 > 10 || num2 < 1 || num2 > 10)
+        {
+            document.getElementById("resultado").innerHTML = "<b>Error:</b> Los números deben estar entre 1 y 10.";
+            return;
+        }
+
+        // Intercambiar si el primero es mayor que el segundo
+        if (num1 > num2)
+        {
+            let temp = num1;
+            num1 = num2;
+            num2 = temp;
+        }
+
+        let tabla = "<table border='1' cellspacing='2' cellpadding='6'>";
+        tabla += "<tr><th>Número</th><th>Multiplicación</th><th>Resultado</th></tr>";
+
+        // Bucle para generar las tablas de multiplicar
+        for (let i = num1; i <= num2; i++)
+        {
+            tabla += `<tr><td colspan="3"><b>Tabla del ${i}</b></td></tr>`;
+            for (let j = 1; j <= 10; j++)
+            {
+                tabla += `<tr><td>${i}</td><td>${i} x ${j}</td><td>${i * j}</td></tr>`;
+            }
+        }
+
+        tabla += "</table>";
+
+        // Mostrar resultado dentro del div con id="resultado"
+        document.getElementById("resultado").innerHTML = tabla;
+    }
+</script>
+
+<h2>Generador de Tablas de Multiplicar</h2>
+<p>Introduce dos números (del 1 al 10) para generar sus tablas de multiplicar.</p>
+<button onclick="generarTablas()">Generar Tablas</button>
+
+<div id="resultado" style="margin-top:20px;"></div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!--emilio izquierdo montero-->
+<!--Ejercicio Bucles 5 28/10/2025-->
+<!--Programa que dibuja un rombo utilizando bucles anidados-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ES6 Bucles 5</title>
+</head>
+<body>
+<script>
+    // Declaración de variables
+    let fila;
+    let tamaño = parseInt(prompt("Introduce el tamaño del rombo:", "0"));
+
+    // Parte superior del rombo (pirámide normal)
+    for (fila = 1; fila <= tamaño; fila++)
+    {
+        // Espacios a la izquierda
+        for (let espacios = tamaño - fila; espacios > 0; espacios--)
+        {
+            document.write("&nbsp;&nbsp;");
+        }
+
+        // Asteriscos
+        for (let conta = 1; conta <= (2 * fila - 1); conta++)
+        {
+            document.write("*");
+        }
+
+        // Salto de línea
+        document.writeln("<br>");
+    }
+
+    // Parte inferior del rombo (pirámide invertida)
+    for (fila = tamaño - 1; fila >= 1; fila--)
+    {
+        // Espacios a la izquierda
+        for (let espacios = tamaño - fila; espacios > 0; espacios--)
+        {
+            document.write("&nbsp;&nbsp;");
+        }
+
+        // Asteriscos
+        for (let conta = 1; conta <= (2 * fila - 1); conta++)
+        {
+            document.write("*");
+        }
+
+        // Salto de línea
+        document.writeln("<br>");
+    }
+</script>
+</body>
+</html>

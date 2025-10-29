@@ -1,0 +1,39 @@
+<!--emilio izquierdo montero -->
+<!--Ejercicio Bucles 6 28/10/2025-->
+<!--Programa que crea dinámicamente elementos HTML usando un bucle for-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ES6 Bucles 6</title>
+</head>
+<body>
+<script>
+    // Función que crea etiquetas HTML <h1> hasta <h6> dinámicamente
+    function funcionUno()
+    {
+        let result = "";
+        let i;
+
+        // Genera títulos desde <h1> hasta <h6>
+        for (i = 1; i <= 6; i++)
+        {
+            result = result + `<h${i}>Título ${i}</h${i}>`;
+        }
+
+        // Inserta el resultado dentro del div con id="central"
+        document.getElementById("central").innerHTML = result;
+    }
+</script>
+
+<p>Pulsa el botón y se crearán etiquetas HTML de título desde <b>h1</b> hasta <b>h6</b>.</p>
+
+<!-- Botón que activa la función -->
+<button onclick="funcionUno()">Pulsa aquí</button>
+
+<!-- Contenedor donde se insertarán los elementos generados -->
+<div id="central"></div>
+
+</body>
+</html>
