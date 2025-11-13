@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+
 // Páginas
 import Home from "./pages/Home";
 import Historia from "./pages/Historia";
@@ -11,16 +12,18 @@ import Tablas from "./pages/Tablas";
 import Formulario from "./pages/Formulario";
 import Multimedia from "./pages/Multimedia";
 
+import "./App.css";
+
 function App() {
   return (
     <Router>
-      <div style={{ fontFamily: "Arial, sans-serif", textAlign: "center" }}>
-        <header style={{ backgroundColor: "#222", color: "#fff", padding: "1rem" }}>
+      <div className="app-container">
+        <header className="app-header">
           <h1>Linux: El poder del software libre</h1>
           <NavBar />
         </header>
 
-        <main style={{ padding: "2rem" }}>
+        <main className="app-main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/historia" element={<Historia />} />
@@ -39,4 +42,4 @@ function App() {
 }
 
 export default App;
-
+// HOLAAAAAAAAAAAAAAAAAAAAA
