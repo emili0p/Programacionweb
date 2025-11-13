@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-
+import NavBar from "./components/NavBar";
 // Páginas
 import Home from "./pages/Home";
 import Historia from "./pages/Historia";
@@ -12,22 +12,12 @@ import Formulario from "./pages/Formulario";
 import Multimedia from "./pages/Multimedia";
 
 function App() {
-  const linkStyle = { margin: "0 10px", color: "#61dafb", textDecoration: "none" };
-
   return (
     <Router>
       <div style={{ fontFamily: "Arial, sans-serif", textAlign: "center" }}>
         <header style={{ backgroundColor: "#222", color: "#fff", padding: "1rem" }}>
           <h1>Linux: El poder del software libre</h1>
-          <nav style={{ marginTop: "1rem" }}>
-            <Link to="/" style={linkStyle}>Inicio</Link>
-            <Link to="/historia" style={linkStyle}>Historia</Link>
-            <Link to="/caracteristicas" style={linkStyle}>Características</Link>
-            <Link to="/imagenes" style={linkStyle}>Imágenes</Link>
-            <Link to="/tablas" style={linkStyle}>Tablas</Link>
-            <Link to="/formularios" style={linkStyle}>Formularios</Link>
-            <Link to="/multimedia" style={linkStyle}>Multimedia</Link>
-          </nav>
+          <NavBar />
         </header>
 
         <main style={{ padding: "2rem" }}>
@@ -49,3 +39,4 @@ function App() {
 }
 
 export default App;
+
