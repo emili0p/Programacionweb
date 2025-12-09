@@ -31,7 +31,13 @@
   <h1>Gestión de Proyectos</h1>
   <p>Sistema CRUD básico</p>
 
-  <a href="crudlaptop.php">Entrar al CRUD</a>
+  <a href="crudlaptop.php">Entrar al CRUD de laptop</a>
+  <a href="crudDistro.php">Entrar al crudDistro </a>
+  <a href="crudCompatibilidad.php">Entrar al de compatibilidad </a>
+  <a href="pedido.php">Entrar al crud pedido </a>
+
+
+
 </body>
 
 </html>

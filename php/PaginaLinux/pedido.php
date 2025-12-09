@@ -1,5 +1,5 @@
 <?php
-$conexion = new mysqli("localhost", "root", "", "tiendalinux");
+$conexion = new mysqli("127.0.0.1", "root", "", "tiendalinux");
 if ($conexion->connect_error) {
   die("Error: " . $conexion->connect_error);
 }
