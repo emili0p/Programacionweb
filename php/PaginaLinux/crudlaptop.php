@@ -1,21 +1,13 @@
 <?php
-/* ============================================
-   CONEXIÓN A MYSQL (XAMPP Linux)
-   ============================================ */
 $mysqli = new mysqli("127.0.0.1", "root", "", "tiendalinux");
-
 if ($mysqli->connect_errno) {
   die("❌ Error al conectar a MySQL: " . $mysqli->connect_error);
 }
 
-/* ============================================
-   INSERTAR REGISTRO
-   ============================================ */
 if (isset($_POST["insertar"])) {
   $stmt = $mysqli->prepare("INSERT INTO Laptop 
         (nombre, marca, modelo, precio, procesador, memoria_ram, almacenamiento, pantalla, estado_libreboot, descripcion, imagen_principal)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
   $stmt->bind_param(
     "sssssssssss",
     $_POST["nombre"],
@@ -30,22 +22,15 @@ if (isset($_POST["insertar"])) {
     $_POST["descripcion"],
     $_POST["imagen_principal"]
   );
-
   $stmt->execute();
   $stmt->close();
 }
 
-/* ============================================
-   ELIMINAR REGISTRO
-   ============================================ */
 if (isset($_GET["eliminar"])) {
   $id = intval($_GET["eliminar"]);
   $mysqli->query("DELETE FROM Laptop WHERE id_laptop = $id");
 }
 
-/* ============================================
-   CONSULTA
-   ============================================ */
 $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
 ?>
 
@@ -56,45 +41,85 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
   <meta charset="UTF-8">
   <title>CRUD Laptop - Tienda Linux</title>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     body {
-      background: #f2f5f7;
+      background: #e9eef3;
+      font-family: "Segoe UI", sans-serif;
     }
 
-    .container {
-      margin-top: 40px;
+    .navbar {
+      background: #1e293b;
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .card {
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     .card-header {
-      background: #212529;
-      color: white;
+      background: #0f172a;
+      color: #fff;
+      padding: 15px 20px;
       font-size: 20px;
+      font-weight: 600;
+    }
+
+    .btn-dark {
+      background: #1e293b !important;
+      border: none;
+    }
+
+    .btn-dark:hover {
+      background: #0f172a !important;
+    }
+
+    table img {
+      border-radius: 6px;
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     footer {
       margin-top: 40px;
-      padding: 20px;
-      background: #212529;
+      padding: 18px;
+      background: #1e293b;
       color: #fff;
       text-align: center;
+      border-top: 4px solid #334155;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark px-4">
+    <span class="navbar-brand">💻 CRUD de Laptops — Tienda Linux</span>
+  </nav>
+
+  <!-- BOTÓN REGRESAR -->
+  <div class="container mt-3">
+    <a href="index.php" class="btn btn-secondary mb-3">
+      ⬅️ Regresar
+    </a>
+  </div>
+
+  <div class="container mt-1">
 
     <!-- FORMULARIO -->
-    <div class="card shadow">
-      <div class="card-header">Registrar Laptop</div>
+    <div class="card shadow mb-4">
+      <div class="card-header">➕ Registrar Laptop</div>
       <div class="card-body">
 
         <form method="POST">
-          <div class="row">
+          <div class="row g-3">
 
             <div class="col-md-6">
               <label class="form-label">Nombre</label>
@@ -112,7 +137,7 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
             </div>
 
             <div class="col-md-6">
-              <label class="form-label">Precio</label>
+              <label class="form-label">Precio (MXN)</label>
               <input class="form-control" type="number" name="precio" required>
             </div>
 
@@ -165,11 +190,11 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
     </div>
 
     <!-- TABLA -->
-    <div class="card shadow mt-4">
-      <div class="card-header">Inventario de Laptops</div>
+    <div class="card shadow">
+      <div class="card-header">📦 Inventario de Laptops</div>
       <div class="card-body">
 
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover align-middle">
           <thead class="table-dark">
             <tr>
               <th>ID</th>
@@ -190,10 +215,9 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
                 <td><?= $row["nombre"] ?></td>
                 <td><?= $row["marca"] ?></td>
                 <td><?= $row["modelo"] ?></td>
-                <td>$<?= $row["precio"] ?></td>
+                <td><strong>$<?= $row["precio"] ?></strong></td>
                 <td><?= $row["estado_libreboot"] ?></td>
-                <td><img src="<?= $row["imagen_principal"] ?>" width="60"></td>
-
+                <td><img src="<?= $row["imagen_principal"] ?>" width="70"></td>
                 <td>
                   <a class="btn btn-danger btn-sm"
                     href="?eliminar=<?= $row["id_laptop"] ?>"
@@ -213,7 +237,7 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
   </div>
 
   <footer>
-    Sistema CRUD — Tienda Linux | Libreboot Shop
+    Sistema CRUD — Tienda Linux | Libreboot Shop 🐧
   </footer>
 
 </body>

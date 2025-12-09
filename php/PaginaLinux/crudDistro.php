@@ -8,7 +8,6 @@ $user = "root";
 $pass = "";
 $db   = "tiendalinux";
 
-// Si usas XAMPP en Linux evita el socket manual
 $conexion = new mysqli($host, $user, $pass, $db);
 
 if ($conexion->connect_error) {
@@ -26,7 +25,6 @@ if (isset($_POST["agregar"])) {
 
   $sql = "INSERT INTO DistribucionLinux (nombre, version, tipo, sitio_oficial)
             VALUES ('$nombre', '$version', '$tipo', '$sitio')";
-
   $conexion->query($sql);
 }
 
@@ -68,7 +66,6 @@ if (isset($_GET["editar"])) {
   $registroEditar = $res->fetch_assoc();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -76,114 +73,143 @@ if (isset($_GET["editar"])) {
   <meta charset="UTF-8">
   <title>CRUD Distribuciones Linux</title>
 
+  <!-- ESTILOS BONITOS -->
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f9;
+      font-family: "Segoe UI", sans-serif;
+      background: #eef2f5;
       margin: 0;
-      padding: 40px;
+      padding: 30px;
       color: #333;
     }
 
     h1 {
       text-align: center;
-      color: #2c3e50;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+      color: #1e293b;
+      font-size: 32px;
     }
 
     .container {
       max-width: 900px;
       margin: auto;
-      background: white;
+      background: #ffffff;
       padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card {
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px;
+      border-radius: 8px;
+      border: 1px solid #94a3b8;
+      background: #ffffff;
+      font-size: 14px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+    }
+
+    .btn-add {
+      background: #2563eb;
+      width: 100%;
+    }
+
+    .btn-edit {
+      background: #0ea5e9;
+    }
+
+    .btn-delete {
+      background: #dc2626;
+    }
+
+    .btn-back {
+      background: #475569;
+      margin-bottom: 20px;
+      display: inline-block;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 25px;
-    }
-
-    table th,
-    table td {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
     table th {
-      background: #34495e;
+      background: #1e293b;
       color: white;
+      padding: 12px;
     }
 
-    .btn {
-      padding: 6px 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
-      color: white;
+    table td {
+      padding: 12px;
+      border-bottom: 1px solid #e2e8f0;
     }
 
-    .btn-edit {
-      background: #3498db;
-    }
-
-    .btn-delete {
-      background: #e74c3c;
-    }
-
-    .btn-add {
-      background: #27ae60;
-      width: 100%;
-    }
-
-    form input {
-      width: 100%;
-      padding: 8px;
-      margin: 6px 0;
-      border-radius: 5px;
-      border: 1px solid #aaa;
-    }
-
-    .card {
-      background: #ecf0f1;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
+    tr:hover {
+      background: #f1f5f9;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>CRUD - Distribuciones Linux</h1>
+  <h1>CRUD — Distribuciones Linux</h1>
 
   <div class="container">
 
+    <!-- BOTÓN REGRESAR -->
+    <a href="index.php" class="btn btn-back">⬅ Regresar</a>
+
     <!-- FORMULARIO -->
     <div class="card">
-      <h2><?php echo $editando ? "Editar Distribución" : "Agregar Nueva Distribución"; ?></h2>
+      <h2><?= $editando ? "Editar Distribución" : "Agregar Nueva Distribución"; ?></h2>
 
       <form method="POST">
 
         <?php if ($editando): ?>
-          <input type="hidden" name="id" value="<?= $registroEditar['id_distribucion'] ?>">
+          <input type="hidden" name="id"
+            value="<?= $registroEditar['id_distribucion'] ?>">
         <?php endif; ?>
 
         <label>Nombre</label>
-        <input type="text" name="nombre" required value="<?= $editando ? $registroEditar['nombre'] : '' ?>">
+        <input type="text" name="nombre" required
+          value="<?= $editando ? $registroEditar['nombre'] : '' ?>">
 
         <label>Versión</label>
-        <input type="text" name="version" required value="<?= $editando ? $registroEditar['version'] : '' ?>">
+        <input type="text" name="version" required
+          value="<?= $editando ? $registroEditar['version'] : '' ?>">
 
         <label>Tipo</label>
-        <input type="text" name="tipo" required value="<?= $editando ? $registroEditar['tipo'] : '' ?>">
+        <input type="text" name="tipo" required
+          value="<?= $editando ? $registroEditar['tipo'] : '' ?>">
 
         <label>Sitio Oficial</label>
-        <input type="url" name="sitio_oficial" required value="<?= $editando ? $registroEditar['sitio_oficial'] : '' ?>">
+        <input type="url" name="sitio_oficial" required
+          value="<?= $editando ? $registroEditar['sitio_oficial'] : '' ?>">
 
         <?php if ($editando): ?>
           <button class="btn btn-edit" name="actualizar">Actualizar</button>
@@ -194,7 +220,7 @@ if (isset($_GET["editar"])) {
     </div>
 
     <!-- TABLA -->
-    <h2 style="margin-top: 40px;">Listado de Distribuciones</h2>
+    <h2>Listado de Distribuciones</h2>
 
     <table>
       <tr>

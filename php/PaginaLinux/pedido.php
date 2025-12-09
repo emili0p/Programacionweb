@@ -63,6 +63,11 @@ if ($accion === 'eliminar') {
 
   <div class="container mt-4">
 
+    <!-- Botón de regreso al menú -->
+    <div class="mb-3">
+      <a href="index.html" class="btn btn-dark">&larr; Regresar al menú</a>
+    </div>
+
     <?php
     // ----------------------
     // FORMULARIO CREAR / EDITAR
@@ -167,11 +172,11 @@ if ($accion === 'eliminar') {
 
           <?php
           $query = "
-    SELECT p.*, u.nombre AS usuario, l.modelo AS laptop
-    FROM Pedido p
-    INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
-    INNER JOIN Laptop l ON p.id_laptop = l.id_laptop
-";
+            SELECT p.*, u.nombre AS usuario, l.modelo AS laptop
+            FROM Pedido p
+            INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
+            INNER INNER JOIN Laptop l ON p.id_laptop = l.id_laptop
+          ";
           $res = $conexion->query($query);
 
           while ($row = $res->fetch_assoc()):

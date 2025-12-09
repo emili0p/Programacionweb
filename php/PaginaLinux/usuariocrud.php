@@ -12,7 +12,7 @@ if (isset($_POST['agregar'])) {
   $telefono = $_POST['telefono'];
 
   $conexion->query("INSERT INTO Usuario (nombre, correo, telefono)
-                      VALUES ('$nombre', '$correo', '$telefono')");
+                    VALUES ('$nombre', '$correo', '$telefono')");
   header("Location: usuarios.php");
   exit();
 }
@@ -25,10 +25,10 @@ if (isset($_POST['editar'])) {
   $telefono = $_POST['telefono'];
 
   $conexion->query("UPDATE Usuario SET 
-                        nombre='$nombre',
-                        correo='$correo',
-                        telefono='$telefono'
-                      WHERE id_usuario=$id");
+                      nombre='$nombre',
+                      correo='$correo',
+                      telefono='$telefono'
+                    WHERE id_usuario=$id");
   header("Location: usuarios.php");
   exit();
 }
@@ -65,6 +65,11 @@ $usuarios = $conexion->query("SELECT * FROM Usuario");
 
   <div class="container mt-4">
 
+    <!-- BOTÓN DE REGRESO -->
+    <div class="mb-3">
+      <a href="index.html" class="btn btn-dark">&larr; Regresar al menú</a>
+    </div>
+
     <h2 class="text-center mb-4">Gestión de Usuarios</h2>
 
     <!-- FORMULARIO -->
@@ -81,19 +86,19 @@ $usuarios = $conexion->query("SELECT * FROM Usuario");
           <?php endif; ?>
 
           <div class="mb-3">
-            <label>Nombre:</label>
+            <label class="form-label">Nombre:</label>
             <input type="text" name="nombre" class="form-control"
               value="<?= $usuarioEditar['nombre'] ?? '' ?>" required>
           </div>
 
           <div class="mb-3">
-            <label>Correo:</label>
+            <label class="form-label">Correo:</label>
             <input type="email" name="correo" class="form-control"
               value="<?= $usuarioEditar['correo'] ?? '' ?>" required>
           </div>
 
           <div class="mb-3">
-            <label>Teléfono:</label>
+            <label class="form-label">Teléfono:</label>
             <input type="text" name="telefono" class="form-control"
               value="<?= $usuarioEditar['telefono'] ?? '' ?>" required>
           </div>
@@ -115,7 +120,7 @@ $usuarios = $conexion->query("SELECT * FROM Usuario");
       <div class="card-header bg-dark text-white">Lista de Usuarios</div>
       <div class="card-body">
 
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover text-center">
           <thead class="table-secondary">
             <tr>
               <th>ID</th>
@@ -137,7 +142,9 @@ $usuarios = $conexion->query("SELECT * FROM Usuario");
                   <a href="usuarios.php?editar=<?= $row['id_usuario'] ?>" class="btn btn-sm btn-warning">Editar</a>
                   <a href="usuarios.php?eliminar=<?= $row['id_usuario'] ?>"
                     class="btn btn-sm btn-danger"
-                    onclick="return confirm('¿Eliminar este usuario?')">Eliminar</a>
+                    onclick="return confirm('¿Eliminar este usuario?')">
+                    Eliminar
+                  </a>
                 </td>
               </tr>
             <?php endwhile; ?>
