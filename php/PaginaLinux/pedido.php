@@ -172,10 +172,10 @@ if ($accion === 'eliminar') {
 
           <?php
           $query = "
-            SELECT p.*, u.nombre AS usuario, l.modelo AS laptop
-            FROM Pedido p
-            INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
-            INNER INNER JOIN Laptop l ON p.id_laptop = l.id_laptop
+          SELECT p.*, u.nombre AS usuario, l.modelo AS laptop
+          FROM Pedido p
+          INNER JOIN Usuario u ON p.id_usuario = u.id_usuario
+          INNER JOIN Laptop l ON p.id_laptop = l.id_laptop
           ";
           $res = $conexion->query($query);
 
