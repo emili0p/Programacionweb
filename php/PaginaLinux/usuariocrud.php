@@ -1,159 +1,210 @@
 <?php
-// --- CONEXIÓN -------------------------
 $conexion = new mysqli("127.0.0.1", "root", "", "tiendalinux");
-if ($conexion->connect_errno) {
-  die("Error de conexión: " . $conexion->connect_error);
+if ($conexion->connect_error) {
+  die("Error en la conexión: " . $conexion->connect_error);
 }
 
-// --- AGREGAR USUARIO ------------------
-if (isset($_POST['agregar'])) {
-  $nombre = $_POST['nombre'];
-  $correo = $_POST['correo'];
+/* --- Crear registro --- */
+if (isset($_POST['crear'])) {
+  $nombre   = $_POST['nombre'];
+  $correo   = $_POST['correo'];
   $telefono = $_POST['telefono'];
 
-  $conexion->query("INSERT INTO Usuario (nombre, correo, telefono)
-                    VALUES ('$nombre', '$correo', '$telefono')");
-  header("Location: usuarios.php");
-  exit();
+  $sql = "INSERT INTO usuarios (nombre, correo, telefono) VALUES ('$nombre', '$correo', '$telefono')";
+  $conexion->query($sql);
 }
 
-// --- EDITAR USUARIO -------------------
-if (isset($_POST['editar'])) {
-  $id = $_POST['id_usuario'];
-  $nombre = $_POST['nombre'];
-  $correo = $_POST['correo'];
-  $telefono = $_POST['telefono'];
-
-  $conexion->query("UPDATE Usuario SET 
-                      nombre='$nombre',
-                      correo='$correo',
-                      telefono='$telefono'
-                    WHERE id_usuario=$id");
-  header("Location: usuarios.php");
-  exit();
-}
-
-// --- ELIMINAR USUARIO -----------------
+/* --- Eliminar registro --- */
 if (isset($_GET['eliminar'])) {
   $id = $_GET['eliminar'];
-  $conexion->query("DELETE FROM Usuario WHERE id_usuario=$id");
-  header("Location: usuarios.php");
-  exit();
+  $conexion->query("DELETE FROM usuarios WHERE id_usuario = $id");
 }
 
-// --- OBTENER USUARIO PARA EDITAR ------
-$usuarioEditar = null;
+/* --- Actualizar registro --- */
+if (isset($_POST['actualizar'])) {
+  $id       = $_POST['id_usuario'];
+  $nombre   = $_POST['nombre'];
+  $correo   = $_POST['correo'];
+  $telefono = $_POST['telefono'];
+
+  $conexion->query("UPDATE Usuarios SET nombre='$nombre', correo='$correo', telefono='$telefono' WHERE id_usuario=$id");
+}
+
+/* --- Obtener registro a editar --- */
+$editando = null;
 if (isset($_GET['editar'])) {
-  $id = $_GET['editar'];
-  $res = $conexion->query("SELECT * FROM Usuario WHERE id_usuario=$id");
-  $usuarioEditar = $res->fetch_assoc();
+  $id_edit = $_GET['editar'];
+  $res = $conexion->query("SELECT * FROM Usuarios WHERE id_usuario = $id_edit");
+  $editando = $res->fetch_assoc();
 }
 
-// --- OBTENER TODOS LOS USUARIOS -------
-$usuarios = $conexion->query("SELECT * FROM Usuario");
+/* --- Consultar todos --- */
+$resultado = $conexion->query("SELECT * FROM Usuarios ORDER BY id_usuario ASC");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <title>CRUD Usuarios</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef1f5;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+    }
+
+    .contenedor {
+      width: 85%;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d1d1;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #005bbb;
+      color: white;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-editar {
+      background: #ffa500;
+    }
+
+    .btn-eliminar {
+      background: #cc0000;
+    }
+
+    .btn-volver {
+      background: #444;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .formulario {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f7f9fc;
+      border-radius: 8px;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 90%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 
-<body class="bg-light">
+<body>
 
-  <div class="container mt-4">
+  <h1>Gestión de Usuarios</h1>
 
-    <!-- BOTÓN DE REGRESO -->
-    <div class="mb-3">
-      <a href="index.html" class="btn btn-dark">&larr; Regresar al menú</a>
-    </div>
+  <div class="contenedor">
 
-    <h2 class="text-center mb-4">Gestión de Usuarios</h2>
+    <a class="btn btn-volver" href="index.php">⬅ Regresar</a>
+
+    <h2><?php echo $editando ? "Editar Usuario" : "Crear Usuario"; ?></h2>
 
     <!-- FORMULARIO -->
-    <div class="card shadow-sm mb-4">
-      <div class="card-header bg-primary text-white">
-        <?= $usuarioEditar ? "Editar Usuario" : "Agregar Usuario" ?>
-      </div>
-      <div class="card-body">
+    <form class="formulario" method="POST">
 
-        <form method="POST">
+      <?php if ($editando): ?>
+        <input type="hidden" name="id_usuario" value="<?= $editando['id_usuario'] ?>">
+      <?php endif; ?>
 
-          <?php if ($usuarioEditar): ?>
-            <input type="hidden" name="id_usuario" value="<?= $usuarioEditar['id_usuario'] ?>">
-          <?php endif; ?>
+      <label>Nombre:</label><br>
+      <input type="text" name="nombre" required value="<?= $editando['nombre'] ?? '' ?>"><br>
 
-          <div class="mb-3">
-            <label class="form-label">Nombre:</label>
-            <input type="text" name="nombre" class="form-control"
-              value="<?= $usuarioEditar['nombre'] ?? '' ?>" required>
-          </div>
+      <label>Correo:</label><br>
+      <input type="email" name="correo" required value="<?= $editando['correo'] ?? '' ?>"><br>
 
-          <div class="mb-3">
-            <label class="form-label">Correo:</label>
-            <input type="email" name="correo" class="form-control"
-              value="<?= $usuarioEditar['correo'] ?? '' ?>" required>
-          </div>
+      <label>Teléfono:</label><br>
+      <input type="text" name="telefono" required value="<?= $editando['telefono'] ?? '' ?>"><br>
 
-          <div class="mb-3">
-            <label class="form-label">Teléfono:</label>
-            <input type="text" name="telefono" class="form-control"
-              value="<?= $usuarioEditar['telefono'] ?? '' ?>" required>
-          </div>
+      <?php if ($editando): ?>
+        <button type="submit" name="actualizar">Actualizar</button>
+      <?php else: ?>
+        <button type="submit" name="crear">Crear</button>
+      <?php endif; ?>
+    </form>
 
-          <?php if ($usuarioEditar): ?>
-            <button type="submit" name="editar" class="btn btn-warning">Actualizar</button>
-            <a href="usuarios.php" class="btn btn-secondary">Cancelar</a>
-          <?php else: ?>
-            <button type="submit" name="agregar" class="btn btn-success">Agregar</button>
-          <?php endif; ?>
+    <!-- TABLA -->
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
 
-        </form>
+      <?php while ($fila = $resultado->fetch_assoc()): ?>
+        <tr>
+          <td><?= $fila['id_usuario'] ?></td>
+          <td><?= $fila['nombre'] ?></td>
+          <td><?= $fila['correo'] ?></td>
+          <td><?= $fila['telefono'] ?></td>
 
-      </div>
-    </div>
+          <td>
+            <a class="btn btn-editar" href="?editar=<?= $fila['id_usuario'] ?>">Editar</a>
+            <a class="btn btn-eliminar"
+              href="?eliminar=<?= $fila['id_usuario'] ?>"
+              onclick="return confirm('¿Seguro que quieres eliminar este usuario?');">
+              Eliminar
+            </a>
+          </td>
+        </tr>
+      <?php endwhile; ?>
 
-    <!-- TABLA DE USUARIOS -->
-    <div class="card shadow-sm">
-      <div class="card-header bg-dark text-white">Lista de Usuarios</div>
-      <div class="card-body">
-
-        <table class="table table-bordered table-hover text-center">
-          <thead class="table-secondary">
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Teléfono</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <?php while ($row = $usuarios->fetch_assoc()): ?>
-              <tr>
-                <td><?= $row['id_usuario'] ?></td>
-                <td><?= $row['nombre'] ?></td>
-                <td><?= $row['correo'] ?></td>
-                <td><?= $row['telefono'] ?></td>
-                <td>
-                  <a href="usuarios.php?editar=<?= $row['id_usuario'] ?>" class="btn btn-sm btn-warning">Editar</a>
-                  <a href="usuarios.php?eliminar=<?= $row['id_usuario'] ?>"
-                    class="btn btn-sm btn-danger"
-                    onclick="return confirm('¿Eliminar este usuario?')">
-                    Eliminar
-                  </a>
-                </td>
-              </tr>
-            <?php endwhile; ?>
-          </tbody>
-
-        </table>
-
-      </div>
-    </div>
+    </table>
 
   </div>
 

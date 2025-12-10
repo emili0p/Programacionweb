@@ -4,28 +4,103 @@ if ($mysqli->connect_errno) {
   die("❌ Error al conectar a MySQL: " . $mysqli->connect_error);
 }
 
-if (isset($_POST["insertar"])) {
-  $stmt = $mysqli->prepare("INSERT INTO Laptop 
-        (nombre, marca, modelo, precio, procesador, memoria_ram, almacenamiento, pantalla, estado_libreboot, descripcion, imagen_principal)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $stmt->bind_param(
-    "sssssssssss",
-    $_POST["nombre"],
-    $_POST["marca"],
-    $_POST["modelo"],
-    $_POST["precio"],
-    $_POST["procesador"],
-    $_POST["memoria_ram"],
-    $_POST["almacenamiento"],
-    $_POST["pantalla"],
-    $_POST["estado_libreboot"],
-    $_POST["descripcion"],
-    $_POST["imagen_principal"]
-  );
-  $stmt->execute();
-  $stmt->close();
+$editando = false;
+$data = [
+  "nombre" => "",
+  "marca" => "",
+  "modelo" => "",
+  "precio" => "",
+  "procesador" => "",
+  "memoria_ram" => "",
+  "almacenamiento" => "",
+  "pantalla" => "",
+  "estado_libreboot" => "",
+  "descripcion" => "",
+  "imagen_principal" => ""
+];
+
+/* ============================
+      EDITAR - CARGAR DATOS
+============================ */
+if (isset($_GET["editar"])) {
+  $editando = true;
+  $id_edit = intval($_GET["editar"]);
+  $res = $mysqli->query("SELECT * FROM Laptop WHERE id_laptop = $id_edit");
+
+  if ($res && $res->num_rows > 0) {
+    $data = $res->fetch_assoc();
+  } else {
+    die("❌ Laptop no encontrada.");
+  }
 }
 
+/* ============================
+         GUARDAR (INSERTAR)
+============================ */
+if (isset($_POST["guardar"])) {
+
+  if (!$editando) {
+    $stmt = $mysqli->prepare("
+            INSERT INTO Laptop 
+            (nombre, marca, modelo, precio, procesador, memoria_ram, almacenamiento, pantalla, estado_libreboot, descripcion, imagen_principal)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+
+    $stmt->bind_param(
+      "sssssssssss",
+      $_POST["nombre"],
+      $_POST["marca"],
+      $_POST["modelo"],
+      $_POST["precio"],
+      $_POST["procesador"],
+      $_POST["memoria_ram"],
+      $_POST["almacenamiento"],
+      $_POST["pantalla"],
+      $_POST["estado_libreboot"],
+      $_POST["descripcion"],
+      $_POST["imagen_principal"]
+    );
+
+    $stmt->execute();
+    $stmt->close();
+  } else {
+    /* ============================
+                 GUARDAR CAMBIOS
+        ============================ */
+    $stmt = $mysqli->prepare("
+            UPDATE Laptop SET 
+                nombre=?, marca=?, modelo=?, precio=?, procesador=?, memoria_ram=?, 
+                almacenamiento=?, pantalla=?, estado_libreboot=?, descripcion=?, imagen_principal=?
+            WHERE id_laptop=?
+        ");
+
+    $stmt->bind_param(
+      "sssssssssssi",
+      $_POST["nombre"],
+      $_POST["marca"],
+      $_POST["modelo"],
+      $_POST["precio"],
+      $_POST["procesador"],
+      $_POST["memoria_ram"],
+      $_POST["almacenamiento"],
+      $_POST["pantalla"],
+      $_POST["estado_libreboot"],
+      $_POST["descripcion"],
+      $_POST["imagen_principal"],
+      $id_edit
+    );
+
+    $stmt->execute();
+    $stmt->close();
+  }
+
+  header("Location: crudlaptop.php");
+  exit;
+}
+
+/* ============================
+            ELIMINAR
+============================ */
 if (isset($_GET["eliminar"])) {
   $id = intval($_GET["eliminar"]);
   $mysqli->query("DELETE FROM Laptop WHERE id_laptop = $id");
@@ -56,7 +131,6 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
     .navbar-brand {
       color: #fff !important;
       font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
     .card {
@@ -67,7 +141,7 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
     .card-header {
       background: #0f172a;
       color: #fff;
-      padding: 15px 20px;
+      padding: 15px;
       font-size: 20px;
       font-weight: 600;
     }
@@ -83,7 +157,7 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
 
     table img {
       border-radius: 6px;
-      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, .2);
     }
 
     footer {
@@ -99,12 +173,10 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
 
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar navbar-dark px-4">
     <span class="navbar-brand">💻 CRUD de Laptops — Tienda Linux</span>
   </nav>
 
-  <!-- BOTÓN REGRESAR -->
   <div class="container mt-3">
     <a href="index.php" class="btn btn-secondary mb-3">
       ⬅️ Regresar
@@ -115,75 +187,52 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
 
     <!-- FORMULARIO -->
     <div class="card shadow mb-4">
-      <div class="card-header">➕ Registrar Laptop</div>
+      <div class="card-header">
+        <?= $editando ? "✏️ Editar Laptop" : "➕ Registrar Laptop" ?>
+      </div>
+
       <div class="card-body">
 
         <form method="POST">
           <div class="row g-3">
 
-            <div class="col-md-6">
-              <label class="form-label">Nombre</label>
-              <input class="form-control" type="text" name="nombre" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Marca</label>
-              <input class="form-control" type="text" name="marca" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Modelo</label>
-              <input class="form-control" type="text" name="modelo" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Precio (MXN)</label>
-              <input class="form-control" type="number" name="precio" required>
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Procesador</label>
-              <input class="form-control" type="text" name="procesador">
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Memoria RAM</label>
-              <input class="form-control" type="text" name="memoria_ram">
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Almacenamiento</label>
-              <input class="form-control" type="text" name="almacenamiento">
-            </div>
-
-            <div class="col-md-6">
-              <label class="form-label">Pantalla</label>
-              <input class="form-control" type="text" name="pantalla">
-            </div>
+            <?php foreach ($data as $campo => $valor): ?>
+              <?php if ($campo !== "imagen_principal" && $campo !== "descripcion" && $campo !== "estado_libreboot"): ?>
+                <div class="col-md-6">
+                  <label class="form-label"><?= ucfirst(str_replace("_", " ", $campo)) ?></label>
+                  <input class="form-control" type="text" name="<?= $campo ?>" value="<?= $valor ?>">
+                </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
 
             <div class="col-md-6">
               <label class="form-label">Libreboot</label>
               <select class="form-select" name="estado_libreboot">
-                <option value="Sí">Sí</option>
-                <option value="No">No</option>
+                <option <?= $data["estado_libreboot"] == "Sí" ? "selected" : "" ?>>Sí</option>
+                <option <?= $data["estado_libreboot"] == "No" ? "selected" : "" ?>>No</option>
               </select>
             </div>
 
             <div class="col-md-12">
               <label class="form-label">Descripción</label>
-              <textarea class="form-control" name="descripcion"></textarea>
+              <textarea class="form-control" name="descripcion"><?= $data["descripcion"] ?></textarea>
             </div>
 
             <div class="col-md-12">
               <label class="form-label">URL Imagen Principal</label>
-              <input class="form-control" type="text" name="imagen_principal">
+              <input class="form-control" type="text" name="imagen_principal" value="<?= $data["imagen_principal"] ?>">
             </div>
 
           </div>
 
-          <button class="btn btn-dark mt-3" type="submit" name="insertar">
-            Guardar Laptop
+          <button class="btn btn-dark mt-3" type="submit" name="guardar">
+            <?= $editando ? "Guardar Cambios" : "Guardar Laptop" ?>
           </button>
+
+          <?php if ($editando): ?>
+            <a href="crudlaptop.php" class="btn btn-secondary mt-3">Cancelar</a>
+          <?php endif; ?>
+
         </form>
 
       </div>
@@ -219,6 +268,11 @@ $result = $mysqli->query("SELECT * FROM Laptop ORDER BY id_laptop DESC");
                 <td><?= $row["estado_libreboot"] ?></td>
                 <td><img src="<?= $row["imagen_principal"] ?>" width="70"></td>
                 <td>
+                  <a class="btn btn-warning btn-sm"
+                    href="?editar=<?= $row["id_laptop"] ?>">
+                    Editar
+                  </a>
+
                   <a class="btn btn-danger btn-sm"
                     href="?eliminar=<?= $row["id_laptop"] ?>"
                     onclick="return confirm('¿Eliminar laptop?');">
