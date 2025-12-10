@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Proyecto Final</title>
+  <title>Proyecto Linux</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
