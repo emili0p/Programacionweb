@@ -1,3 +1,8 @@
+<?php
+include "plantilla/header.php";
+include "plantilla/menu.php";
+?>
+
 <main style="max-width:900px; margin:30px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
   <h2>Historia de Linux</h2>
 
@@ -12,3 +17,5 @@
     utilizado en servidores, supercomputadoras, dispositivos móviles e incluso por la NASA.
   </p>
 </main>
+<?php include "plantilla/footer.php";
+?>

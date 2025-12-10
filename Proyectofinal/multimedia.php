@@ -10,7 +10,9 @@
 
 <body>
 
-  <?php include "header.php"; ?>
+  <?php include "plantilla/header.php";
+  include "plantilla/menu.php"
+  ?>
 
   <main>
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg"
@@ -47,7 +49,7 @@
     </p>
   </main>
 
-  <?php include "footer.php"; ?>
+  <?php include "plantilla/footer.php"; ?>
 
 </body>
 

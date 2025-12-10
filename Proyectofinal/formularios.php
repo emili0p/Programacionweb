@@ -1,4 +1,11 @@
+<?php
+include "plantilla/header.php";
+include "plantilla/menu.php";
+?>
+
+
 <h1 style="
+
     font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
     margin-bottom: 20px;
 ">
@@ -80,3 +87,7 @@
     onmouseout="this.style.background='#4CAF50'">
 
 </form>
+
+<?php
+include "plantilla/footer.php";
+?>

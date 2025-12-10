@@ -1,3 +1,7 @@
+<?php include "plantilla/header.php";
+include "plantilla/menu.php";
+?>
+
 <main style="max-width:1000px; margin:30px auto; padding:20px; background:white; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);">
 
   <p style="font-size:0.9rem; color:#555;">
@@ -111,4 +115,7 @@
     Nota: El "nivel de dificultad" es orientativo. Depende de la experiencia y del entorno elegido.
   </p>
 
+
 </main>
+<?php include "plantilla/footer.php";
+?>

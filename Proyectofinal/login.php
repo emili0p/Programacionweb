@@ -1,24 +1,44 @@
-<?php include "plantilla/header.php"; ?>
-<?php include "plantilla/menu.php"; ?>
+<?php
+session_start();
 
-<main style="display:flex; justify-content:center; align-items:center; height:70vh;">
-  <form action="validarLogin.php" method="POST"
-    style="background:white; padding:30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); width:350px;">
-    <h2 style="text-align:center; color:#00b894;">Iniciar Sesión</h2>
+// 1. Conexión a la Base de Datos
+// Cambia estos datos con los tuyos
+$conexion = new mysqli("127.0.0.1", "root", "", "tiendalinux");
 
-    <label>Usuario:</label>
-    <input type="text" name="usuario" required
-      style="width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;">
+// Verificar conexión
+if ($conexion->connect_error) {
+  die("Error de conexión: " . $conexion->connect_error);
+}
 
-    <label>Contraseña:</label>
-    <input type="password" name="password" required
-      style="width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ccc;">
+// 2. Obtener datos del formulario
+$usuario_ingresado = $_POST['usuario'];
+$password_ingresada = $_POST['password'];
 
-    <button type="submit"
-      style="width:100%; padding:10px; background:#00b894; color:white; border:none; border-radius:5px; cursor:pointer;">
-      Entrar
-    </button>
-  </form>
-</main>
+// 3. Consultar SOLO por el usuario (la contraseña la verificaremos después)
+$stmt = $conexion->prepare("SELECT password FROM usuarios WHERE usuario = ?");
+$stmt->bind_param("s", $usuario_ingresado);
+$stmt->execute();
+$resultado = $stmt->get_result();
 
-<?php include "plantilla/footer.php"; ?>
+if ($resultado->num_rows === 1) {
+  // Usuario encontrado, obtener el hash de la BD
+  $fila = $resultado->fetch_assoc();
+  $hash_almacenado = $fila['password'];
+
+  // 4. Verificar la contraseña ingresada contra el hash almacenado
+  if (password_verify($password_ingresada, $hash_almacenado)) {
+    // La contraseña es correcta, iniciar sesión
+    $_SESSION['usuario'] = $usuario_ingresado;
+    header("Location: PaginaLinux/index.php"); // Redirige a la tienda
+    exit();
+  }
+}
+
+// Si llega aquí, el usuario no fue encontrado o la contraseña fue incorrecta
+echo "<script>
+    alert('Usuario o contraseña incorrectos');
+    window.location.href='login.php';
+</script>";
+
+$stmt->close();
+$conexion->close();
