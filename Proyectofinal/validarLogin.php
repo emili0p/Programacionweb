@@ -1,42 +1,47 @@
 <?php
-// validarLogin.php - ESTE ARCHIVO SOLO SE EJECUTA DESDE EL SUBMIT DEL FORMULARIO
-
 session_start();
 
-// 1. Conexión a la Base de Datos
+// Conexión BD
 $conexion = new mysqli("127.0.0.1", "root", "", "tiendalinux");
 
 if ($conexion->connect_error) {
   die("Error de conexión: " . $conexion->connect_error);
 }
 
-// 2. Obtener datos del formulario
-// Aquí no necesitamos verificar si existe $_POST, asumimos que viene del formulario.
 $nombre_ingresado = $_POST['usuario'];
 $password_ingresada = $_POST['password'];
 
-
-// 3. CONSULTA SEGURA PERO SIN HASHING: 
-// CRÍTICA: La tabla debe ser 'Usuario' y la columna 'nombre'.
-$stmt = $conexion->prepare("SELECT nombre FROM Usuario WHERE nombre = ? AND password = ?");
-
-if ($stmt === false) {
-  die("Error al preparar la consulta: " . $conexion->error);
-}
-
-$stmt->bind_param("ss", $nombre_ingresado, $password_ingresada);
+// 1. Buscar solo por nombre
+$stmt = $conexion->prepare("SELECT id_usuario, password FROM Usuario WHERE nombre = ?");
+$stmt->bind_param("s", $nombre_ingresado);
 $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows === 1) {
-  // ÉXITO
-  $_SESSION['usuario'] = $nombre_ingresado;
-  header("Location: PaginaLinux/index.php");
-  exit();
+
+  $fila = $resultado->fetch_assoc();
+  $hash_guardado = $fila['password'];
+
+  // 2. Comparar hash
+  if (password_verify($password_ingresada, $hash_guardado)) {
+
+    // LOGIN CORRECTO
+    $_SESSION['usuario'] = $nombre_ingresado;
+    $_SESSION['id_usuario'] = $fila['id_usuario'];
+
+    header("Location: index.php");
+    exit();
+  } else {
+    // Contraseña incorrecta
+    echo "<script>
+            alert('Contraseña incorrecta');
+            window.location.href='login.php';
+        </script>";
+  }
 } else {
-  // FALLO
+  // Usuario no existe
   echo "<script>
-        alert('Usuario o contraseña incorrectos');
+        alert('Usuario no encontrado');
         window.location.href='login.php';
     </script>";
 }

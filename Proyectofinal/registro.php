@@ -4,7 +4,7 @@ include "plantilla/menu.php";
 ?>
 
 <main style="display:flex; justify-content:center; align-items:center;">
-  <form action="usuariocrud.php" method="POST"
+  <form action="PaginaLinux/usuariocrud.php" method="POST"
     style="background:white; padding:30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); width:450px; margin: 20px 0;">
 
     <h2 style="text-align:center; color:#00b894;">Registro de Usuario</h2>

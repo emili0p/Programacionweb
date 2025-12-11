@@ -29,7 +29,7 @@
         " onmouseover="this.style.color='white'" onmouseout="this.style.color='#00b894'">
       Iniciar sesión
     </a>
-    <a href="registro.php" style="
+    <a href="../registro.php" style="
             color: #00b894; /* Destacar enlace a registrarse */
             text-decoration: none;
             margin: 0 12px;
@@ -41,7 +41,7 @@
   <?php endif; ?>
 
 
-  <a href="index.php" style="
+  <a href="../index.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
@@ -50,7 +50,7 @@
     " onmouseover="this.style.color='#00b894'" onmouseout="this.style.color='white'">
     Inicio
   </a>
-  <a href="historia.php" style="
+  <a href="../historia.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
@@ -59,7 +59,7 @@
     " onmouseover="this.style.color='#00b894'" onmouseout="this.style.color='white'">
     Historia
   </a>
-  <a href="caracteristicas.php" style="
+  <a href="../caracteristicas.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
@@ -68,7 +68,7 @@
     " onmouseover="this.style.color='#00b894'" onmouseout="this.style.color='white'">
     Características
   </a>
-  <a href="imagenes.php" style="
+  <a href="../imagenes.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
@@ -77,7 +77,7 @@
     " onmouseover="this.style.color='#00b894'" onmouseout="this.style.color='white'">
     Imágenes
   </a>
-  <a href="tablas.php" style="
+  <a href="../tablas.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
@@ -86,7 +86,7 @@
     " onmouseover="this.style.color='#00b894'" onmouseout="this.style.color='white'">
     Tablas
   </a>
-      <a href="formularios.php" style="
+      <a href="../formularios.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
@@ -95,7 +95,7 @@
     " onmouseover="this.style.color='#00b894'" onmouseout="this.style.color='white'">
     Formularios
   </a>
-      <a href="multimedia.php" style="
+      <a href="../multimedia.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
