@@ -10,14 +10,14 @@ if (isset($_POST['crear'])) {
   $correo   = $_POST['correo'];
   $telefono = $_POST['telefono'];
 
-  $sql = "INSERT INTO usuarios (nombre, correo, telefono) VALUES ('$nombre', '$correo', '$telefono')";
+  $sql = "INSERT INTO Usuario (nombre, correo, telefono) VALUES ('$nombre', '$correo', '$telefono')";
   $conexion->query($sql);
 }
 
 /* --- Eliminar registro --- */
 if (isset($_GET['eliminar'])) {
   $id = $_GET['eliminar'];
-  $conexion->query("DELETE FROM usuarios WHERE id_usuario = $id");
+  $conexion->query("DELETE FROM Usuario WHERE id_usuario = $id");
 }
 
 /* --- Actualizar registro --- */
@@ -27,19 +27,19 @@ if (isset($_POST['actualizar'])) {
   $correo   = $_POST['correo'];
   $telefono = $_POST['telefono'];
 
-  $conexion->query("UPDATE Usuarios SET nombre='$nombre', correo='$correo', telefono='$telefono' WHERE id_usuario=$id");
+  $conexion->query("UPDATE Usuario SET nombre='$nombre', correo='$correo', telefono='$telefono' WHERE id_usuario=$id");
 }
 
 /* --- Obtener registro a editar --- */
 $editando = null;
 if (isset($_GET['editar'])) {
   $id_edit = $_GET['editar'];
-  $res = $conexion->query("SELECT * FROM Usuarios WHERE id_usuario = $id_edit");
+  $res = $conexion->query("SELECT * FROM Usuario WHERE id_usuario = $id_edit");
   $editando = $res->fetch_assoc();
 }
 
 /* --- Consultar todos --- */
-$resultado = $conexion->query("SELECT * FROM Usuarios ORDER BY id_usuario ASC");
+$resultado = $conexion->query("SELECT * FROM Usuario ORDER BY id_usuario ASC");
 ?>
 
 <!DOCTYPE html>
