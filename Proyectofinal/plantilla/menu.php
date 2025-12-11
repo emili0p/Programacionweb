@@ -105,7 +105,7 @@
     Multimedia
   </a>
 
-  <a href="PaginaLinux/index.php" style="
+  <a href="../Tienda.php" style="
         color: white;
         text-decoration: none;
         margin: 0 12px;
