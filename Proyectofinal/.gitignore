@@ -147,5 +147,3 @@ archivos/
 # Tests y coverage
 /coverage/
 .phpunit.result.cache
-Proyectofinal/fpdf
-Proyectofinal/fpdf/font
